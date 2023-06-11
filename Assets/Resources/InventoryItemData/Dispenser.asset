@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611398af3c3ff724fbc1db0dc672f35d, type: 3}
+  m_Name: Dispenser
+  m_EditorClassIdentifier: 
+  Id: 6
+  Name: Dispenser
+  Description: Gives machines access to your Collection
+  Icon: {fileID: 21300000, guid: f1bcbfe9f14462b4691628802bd93aa4, type: 3}
+  MaxStackSize: 99
+  PriceValue: 4
+  Prefab: {fileID: 3695920306759732002, guid: 94105bc3b14b4444cadef192b28065df, type: 3}
+  factoryBuilding: {fileID: 11400000, guid: 8d943229a5cd8484ea35c8136b41dcf9, type: 2}

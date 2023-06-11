@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611398af3c3ff724fbc1db0dc672f35d, type: 3}
+  m_Name: Scrap Metal
+  m_EditorClassIdentifier: 
+  Id: 1
+  Name: Scrap Metal
+  Description: Various scrap pieces of metal
+  Icon: {fileID: 21300000, guid: fb5455e2fea4fc748b4656765de8afeb, type: 3}
+  MaxStackSize: 99
+  PriceValue: 1
+  Prefab: {fileID: 4979035040671553231, guid: 8f6fd7c4420e5eb4386e563de1de691c, type: 3}
+  factoryBuilding: {fileID: 0}

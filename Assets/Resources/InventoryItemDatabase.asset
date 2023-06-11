@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7004f09d37062004a881da09aefd5384, type: 3}
+  m_Name: InventoryItemDatabase
+  m_EditorClassIdentifier: 
+  itemDatabase:
+  - {fileID: 11400000, guid: df95cd4fa5434404188305998d2b9e6b, type: 2}
+  - {fileID: 11400000, guid: 927faad07ea88ef479f6bf760b232986, type: 2}
+  - {fileID: 11400000, guid: 264b7f507d66c074f98d6e97869ecfbf, type: 2}
+  - {fileID: 11400000, guid: b460e6ad80d10664ab960599e8c2deea, type: 2}
+  - {fileID: 11400000, guid: fc4d0bd24007c4947bc6c3432f11ae94, type: 2}
+  - {fileID: 11400000, guid: 8989abbcb76e3f646aef60bfca07f782, type: 2}
+  - {fileID: 11400000, guid: 11998b629f6fa62409afb22782fe00fe, type: 2}
+  ItemsAsStringList:
+  - '0: Iron'
+  - '1: Scrap Metal'
+  - '2: Conveyor Belt'
+  - '3: Forge'
+  - '4: Grabber Arm'
+  - '5: StorageBox_1x1'
+  - '6: Dispenser'
