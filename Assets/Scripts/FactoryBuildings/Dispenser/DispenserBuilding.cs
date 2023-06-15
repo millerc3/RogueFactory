@@ -9,8 +9,11 @@ public class DispenserBuilding : FactoryBuilding
     private PlayerCollectionManager playerCollectionManager;
 
     [SerializeField] private InventoryItemData itemToDispense;
+    public InventoryItemData ItemToDispense => itemToDispense;
 
-    [SerializeField] private InventoryItemDatabase itemDatabse;
+    [SerializeField] private InventoryItemDatabase itemDatabase;
+
+    [SerializeField] private DispenserUI sharedDispenserUI;
 
     private DispenserSaveData dispenserSaveData;
 
@@ -19,6 +22,8 @@ public class DispenserBuilding : FactoryBuilding
     protected override void Awake()
     {
         base.Awake();
+
+        sharedDispenserUI = FindObjectOfType<DispenserUI>(true);
 
         dispenserSaveData = new DispenserSaveData(-1);
     }
@@ -32,11 +37,43 @@ public class DispenserBuilding : FactoryBuilding
         LocalUpdate(0);
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        if (interactorTransform != null)
+        {
+            if (!InRangeOfInteractor())
+            {
+                HideUI();
+            }
+        }
+    }
+
 
 
     #endregion
 
     #region Dispenser
+
+    public void SetItemToDispense(InventoryItemData item)
+    {
+        itemToDispense = item;
+    }
+
+    private void ShowUI()
+    {
+        sharedDispenserUI.Setup(this);
+        sharedDispenserUI.gameObject.SetActive(true);
+    }
+
+    private void HideUI()
+    {
+        if (sharedDispenserUI.Dispenser == this)
+        {
+            sharedDispenserUI.gameObject.SetActive(false);
+        }
+    }
 
     #endregion
 
@@ -110,7 +147,8 @@ public class DispenserBuilding : FactoryBuilding
     {
         base.OnTapInteract();
 
-        // TODO: Setup a GUI that lets us pick our item to dispense from the collection
+        print("Ontapinteract");
+        ShowUI();
     }
 
     #endregion
@@ -120,7 +158,7 @@ public class DispenserBuilding : FactoryBuilding
     {
         if (saveData.DispenserSaveDictionary.TryGetValue(Origin, out DispenserSaveData storedSaveData))
         {
-            itemToDispense = itemDatabse.GetItem(storedSaveData.ItemToDispenseId);
+            itemToDispense = itemDatabase.GetItem(storedSaveData.ItemToDispenseId);
         }
     }
 

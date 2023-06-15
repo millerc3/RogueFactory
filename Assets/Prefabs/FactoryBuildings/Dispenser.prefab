@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 1087157528864230603}
   - component: {fileID: 903083382710419242}
   - component: {fileID: 8703353397732204619}
-  - component: {fileID: 5039484668706637155}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -115,19 +114,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5039484668706637155
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3306312401616105791}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3387834268396738440
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8303638603770560083}
   - component: {fileID: 4590875884342481787}
+  - component: {fileID: 8284005728767751005}
   m_Layer: 0
   m_Name: Dispenser
   m_TagString: Untagged
@@ -213,4 +200,18 @@ MonoBehaviour:
   interactionRange: 5
   tearDownTime: 0.5
   itemToDispense: {fileID: 0}
-  itemDatabse: {fileID: 11400000, guid: b5782aedc15d53e48903232f2930eab6, type: 2}
+  itemDatabase: {fileID: 11400000, guid: b5782aedc15d53e48903232f2930eab6, type: 2}
+  sharedDispenserUI: {fileID: 0}
+--- !u!65 &8284005728767751005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695920306759732002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.5, z: 0.5}

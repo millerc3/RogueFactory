@@ -15,6 +15,9 @@ public class CollectionSystem
     public int InventorySize => InventorySlots.Count;
 
     public UnityAction<InventorySlot> OnInventorySlotChanged;
+    public UnityAction OnCollectionChanged;
+
+    private InventorySlot tmpSlot;
 
     public CollectionSystem()
     {
@@ -42,12 +45,16 @@ public class CollectionSystem
             if (slot.ItemData != itemToAdd) continue;
 
             slot.AddToStack(amountToAdd);
+            OnInventorySlotChanged?.Invoke(slot);
+            OnCollectionChanged?.Invoke();
             return amountToAdd;
         }
 
         // If we get here, the current item is not yet in the collection, so add it
-        inventorySlots.Add(new InventorySlot(itemToAdd, amountToAdd));
-
+        tmpSlot = new InventorySlot(itemToAdd, amountToAdd);
+        inventorySlots.Add(tmpSlot);
+        OnInventorySlotChanged?.Invoke(tmpSlot);
+        OnCollectionChanged?.Invoke();
         return amountToAdd;
     }
 
@@ -78,7 +85,11 @@ public class CollectionSystem
             {
                 // since this slot is now empty, we can remove it from our inventory slots list
                 inventorySlots.RemoveAt(i);
+                OnCollectionChanged?.Invoke();
             }
+
+            OnInventorySlotChanged?.Invoke(slot);
+            OnCollectionChanged?.Invoke();
             return amountRemoved;
         }
 

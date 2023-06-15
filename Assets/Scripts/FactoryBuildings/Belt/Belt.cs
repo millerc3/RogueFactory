@@ -110,6 +110,8 @@ public class Belt : FactoryBuilding
     {
         if (depth > 1) return;
 
+        if (this == null) return;
+
         CheckNeighbors();
         SetForwardBelt();
 

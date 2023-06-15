@@ -7,6 +7,7 @@ public class InventoryUIController : MonoBehaviour
 {
     public DynamicInventoryDisplay ChestPanel;
     public DynamicInventoryDisplay PlayerBackpackPanel;
+    public GameObject PlayerCollectionUI;
 
     public StaticInventoryDisplay PlayerHotBar;
 
@@ -19,6 +20,11 @@ public class InventoryUIController : MonoBehaviour
 
     private void Update()
     {
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
+        {
+            PlayerCollectionUI.SetActive(!PlayerCollectionUI.activeSelf);
+        }
+
         if (ChestPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
             ChestPanel.gameObject.SetActive(false);
 

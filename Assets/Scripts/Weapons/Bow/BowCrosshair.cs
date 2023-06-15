@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Shapes;
-using UnityEditor.ShaderGraph.Internal;
 
 public class BowCrosshair : WeaponCrosshair
 {
