@@ -9,7 +9,7 @@ public class InventoryUIController : MonoBehaviour
     public DynamicInventoryDisplay PlayerBackpackPanel;
     public GameObject PlayerCollectionUI;
 
-    public StaticInventoryDisplay PlayerHotBar;
+    public HotbarInventoryDisplay PlayerHotBar;
 
     private void Awake()
     {

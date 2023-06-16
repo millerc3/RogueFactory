@@ -12,7 +12,7 @@ public class CombatPlayerUIController : MonoBehaviour
 
     private void Start()
     {
-        QCWindow = FindObjectOfType<QuantumConsole>().gameObject;
+        QCWindow = FindObjectOfType<QuantumConsole>(true).gameObject;
         HideQC();
     }
 

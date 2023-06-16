@@ -20,4 +20,6 @@ public class InventoryItemData : ScriptableObject
 
     public GameObject Prefab;
     public FactoryBuildingData factoryBuilding;
+
+    public bool CanBeUsedInDispenser = false;
 }

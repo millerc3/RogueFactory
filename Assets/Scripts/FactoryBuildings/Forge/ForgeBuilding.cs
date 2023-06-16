@@ -10,10 +10,13 @@ using UnityEngine;
 public class ForgeBuilding : FactoryBuilding
 {
     private ForgeInventory inventory;
+    public ForgeInventory Inventory => inventory;
     private ForgeSaveData forgeSaveData;
 
     [SerializeField] private CraftingRecipeDatabase recipeDatabase;
     private CraftingRecipe currentRecipe;
+
+    private ForgeBuildingUI sharedForgeUI;
 
     private int tickTimer;
 
@@ -25,6 +28,7 @@ public class ForgeBuilding : FactoryBuilding
 
         inventory = GetComponent<ForgeInventory>();
         forgeSaveData = new ForgeSaveData(inventory.InputInventory, inventory.OutputInventory);
+        sharedForgeUI = FindObjectOfType<ForgeBuildingUI>(true);
     }
 
     protected override void OnEnable()
@@ -48,9 +52,12 @@ public class ForgeBuilding : FactoryBuilding
     {
         base.Update();
 
-        if (interactorTransform != null && !Interactor.InRangeOfInteractor(interactorTransform, transform, interactionRange))
+        if (interactorTransform != null)
         {
-            ForgeInventory.OnForgeInventoryHideRequested?.Invoke(inventory);
+            if (!InRangeOfInteractor())
+            {
+                HideUI();
+            }
         }
     }
 
@@ -70,7 +77,7 @@ public class ForgeBuilding : FactoryBuilding
         return true;
     }
 
-    private void DetermineCurrentRecipe()
+    public void DetermineCurrentRecipe()
     {
         currentRecipe = null;
         if (inventory.InputInventory.IsEmpty()) return;
@@ -96,6 +103,20 @@ public class ForgeBuilding : FactoryBuilding
         foreach (CraftingRecipeComponent recipeInput in currentRecipe.InputItems)
         {
             inventory.InputInventory.RemoveItemFromInventory(recipeInput.item, recipeInput.amount, out _);
+        }
+    }
+
+    public void ShowUI()
+    {
+        sharedForgeUI.Setup(this);
+        sharedForgeUI.gameObject.SetActive(true);
+    }
+
+    public void HideUI()
+    {
+        if (sharedForgeUI.ForgeInventory == Inventory)
+        {
+            sharedForgeUI.gameObject.SetActive(false);
         }
     }
 
@@ -194,7 +215,8 @@ public class ForgeBuilding : FactoryBuilding
     {
         base.OnTapInteract();
 
-        ForgeInventory.OnForgeInventoryDisplayRequested?.Invoke(inventory);
+        //ForgeInventory.OnForgeInventoryDisplayRequested?.Invoke(inventory);
+        ShowUI();
     }
 
     #endregion

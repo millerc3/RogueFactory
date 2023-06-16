@@ -115,4 +115,9 @@ public class InventorySlot : ISerializationCallbackReceiver
         InventoryItemDatabase db = Resources.Load("InventoryItemDatabase") as InventoryItemDatabase;
         itemData = db.GetItem(itemId);
     }
+
+    public bool HasItem()
+    {
+        return itemData != null;
+    }
 }

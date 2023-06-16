@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DispenserUI : MonoBehaviour
@@ -19,6 +20,15 @@ public class DispenserUI : MonoBehaviour
     private void Awake()
     {
         mouseItemData = FindObjectOfType<MouseItemData>();
+    }
+
+    private void Update()
+    {
+        // TODO : Replace with input system
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void Setup(DispenserBuilding currDispenser)
@@ -46,7 +56,7 @@ public class DispenserUI : MonoBehaviour
             // mouseData == null -> Clear dispensing
             dispenser.SetItemToDispense(null);
         }
-        else
+        else if (mouseSlot.ItemData.CanBeUsedInDispenser)
         {
             // mouseData == item -> Set item to dispense to the item on the mouse
             dispenser.SetItemToDispense(mouseSlot.ItemData);

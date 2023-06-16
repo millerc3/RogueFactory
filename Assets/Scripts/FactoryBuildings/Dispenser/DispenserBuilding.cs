@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DispenserBuilding : FactoryBuilding
 {
@@ -58,16 +59,18 @@ public class DispenserBuilding : FactoryBuilding
 
     public void SetItemToDispense(InventoryItemData item)
     {
+        if (!item.CanBeUsedInDispenser) return;
+
         itemToDispense = item;
     }
 
-    private void ShowUI()
+    public void ShowUI()
     {
         sharedDispenserUI.Setup(this);
         sharedDispenserUI.gameObject.SetActive(true);
     }
 
-    private void HideUI()
+    public void HideUI()
     {
         if (sharedDispenserUI.Dispenser == this)
         {
@@ -147,7 +150,6 @@ public class DispenserBuilding : FactoryBuilding
     {
         base.OnTapInteract();
 
-        print("Ontapinteract");
         ShowUI();
     }
 

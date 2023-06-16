@@ -8,7 +8,7 @@ using UnityEngine;
 ///   The inventory system is owned by the inventoryHolder
 /// </summary>
 
-public class StaticInventoryDisplay : InventoryDisplay
+public class HotbarInventoryDisplay : InventoryDisplay
 {
     [SerializeField] private InventoryHolder inventoryHolder;
     [SerializeField] private InventorySlot_UI[] slots;

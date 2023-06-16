@@ -6,12 +6,18 @@ using UnityEngine.InputSystem;
 
 public abstract class InventoryDisplay : MonoBehaviour
 {
-    [SerializeField] MouseItemData mouseItemData;
+    /*[SerializeField] */MouseItemData mouseItemData;
     protected InventorySystem inventorySystem;
     protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
 
     public InventorySystem InventorySystem => inventorySystem;
     public Dictionary<InventorySlot_UI, InventorySlot> SlotDictionary => slotDictionary;
+
+
+    private void Awake()
+    {
+        mouseItemData = FindObjectOfType<MouseItemData>();
+    }
 
     protected virtual void Start()
     {

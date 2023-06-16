@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using Unity.VisualScripting;
-using SaveLoadSystem;
 
 /// <summary>
 /// This is an inventory display that can be used by various different inventory systems.

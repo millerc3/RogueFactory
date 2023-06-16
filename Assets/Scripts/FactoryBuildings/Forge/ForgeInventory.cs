@@ -13,8 +13,8 @@ public class ForgeInventory : MonoBehaviour
     public InventorySystem InputInventory => inputInventorySystem;
     public InventorySystem OutputInventory => outputInventorySystem;
 
-    public static UnityAction<ForgeInventory> OnForgeInventoryDisplayRequested;
-    public static UnityAction<ForgeInventory> OnForgeInventoryHideRequested;
+    //public static UnityAction<ForgeInventory> OnForgeInventoryDisplayRequested;
+    //public static UnityAction<ForgeInventory> OnForgeInventoryHideRequested;
 
     private void Awake()
     {
