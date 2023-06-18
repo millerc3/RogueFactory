@@ -1,0 +1,9 @@
+Added URP compatibility from 2019.4 and later.
+
+
+When importing the pack in a URP project, open the "URP_Install_Toon Harbor Pack" file from the project hierarchy.
+This will replace the custom toon shaders with URP compatible custom toon shaders.
+
+
+Renderer settings:
+Please check the "Depth Texture" and "Opaque Texture" boxes just in case there are some custom shaders coming in the next updates.

@@ -13,7 +13,7 @@ public class StateMachine
     // Transitions that are currently available to us, given our current state
     private List<Transition> currentTransitions = new List<Transition>();
     // Transitions that are ALWAYS available to us, no matter our current state
-    private List<Transition> anyTransitions = null;
+    private List<Transition> anyTransitions = new List<Transition>();
 
     // Nice helper to just initialize an empty list of transitions
     private static List<Transition> EmptyTransitions = new List<Transition>(0);
@@ -37,7 +37,7 @@ public class StateMachine
         currentState?.OnExit();
         currentState = state;
 
-        transitions.TryGetValue(currentState.GetType(), out var currentTransitions);
+        transitions.TryGetValue(currentState.GetType(), out currentTransitions);
         if (currentTransitions == null)
         {
             currentTransitions = EmptyTransitions;
@@ -98,7 +98,6 @@ public class StateMachine
                 return transition;
             }
         }
-
         return null;
     }
 

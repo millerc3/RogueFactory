@@ -3,6 +3,7 @@ using Mono.CSharp.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,25 +13,41 @@ public class TestEnemyController : AgentCharacter
 {
     private StateMachine stateMachine;
 
-    private Transform currentTarget;
+    private Vector3 currentTarget;
+
+    private TPSCombatCharacterController player;
 
     protected override void OnAwake()
     {
         base.OnAwake();
 
         stateMachine = new StateMachine();
-        var player = FindObjectOfType<TPSCombatCharacterController>();
+        player = FindObjectOfType<TPSCombatCharacterController>();
 
         // Define state machine states
-        var searchState = new SearchForPlayer(this, player);
+        var wanderState = new Wander(this);
+        var moveToTargetState = new MoveTowardsTarget(this, player.transform);
+        //var searchState = new SearchForPlayer(this, player);
         var meleeAttackState = new MeleeAttackPlayer(this, GetNavMeshAgent(), player);
 
         // Define state machine transitions
-        stateMachine.AddTransition(searchState, 
-                                   meleeAttackState, 
-                                   () => Vector3.Distance(transform.position, player.GetPosition()) < 1f);
+        stateMachine.AddTransition(wanderState,
+                                   moveToTargetState, 
+                                   () => Vector3.Distance(GetPosition(), player.GetPosition()) <= 10f);
 
-        stateMachine.SetState(searchState);
+        stateMachine.AddTransition(moveToTargetState,
+                                   meleeAttackState,
+                                   () => Vector3.Distance(GetPosition(), player.GetPosition()) <= 1f);
+
+        stateMachine.AddTransition(meleeAttackState,
+                                   moveToTargetState,
+                                   () => Vector3.Distance(GetPosition(), player.GetPosition()) > 3f);
+
+        stateMachine.AddTransition(moveToTargetState,
+                                   wanderState,
+                                   () => Vector3.Distance(GetPosition(), player.GetPosition()) > 10f);
+
+        stateMachine.SetState(wanderState);
     }
 
     protected override void OnStart()
@@ -44,7 +61,7 @@ public class TestEnemyController : AgentCharacter
     {
         base.OnUpdate();
 
-
+        stateMachine.Tick();
     }
 
     private void Attack()
@@ -55,38 +72,54 @@ public class TestEnemyController : AgentCharacter
 
     #region States
 
-    public class SearchForPlayer : IState
+    public class Wander : IState
     {
-        private TestEnemyController enemyController;
-        private TPSCombatCharacterController player;
+        TestEnemyController enemyController;
 
-        public SearchForPlayer(TestEnemyController _enemyController, TPSCombatCharacterController _player)
+        public Wander(TestEnemyController _enemyController)
         {
             enemyController = _enemyController;
-            player = _player;
         }
 
-        void IState.Tick()
+        public void Tick()
         {
-            enemyController.currentTarget = player.transform;
+            float d = Vector3.Distance(enemyController.transform.position, enemyController.currentTarget);
+
+
+            if (d <= .5f)
+            {
+                GetNewTarget();
+            }
         }
 
-        void IState.OnEnter()
+        public void OnEnter()
         {
+            GetNewTarget();
         }
 
-        void IState.OnExit()
+        public void OnExit()
         {
+
+        }   
+
+        private void GetNewTarget()
+        {
+            enemyController.currentTarget = enemyController.transform.position + Vector3.forward * Random.Range(-10f, 10f) + Vector3.right * Random.Range(-10f, 10f);
+            enemyController.GetNavMeshAgent().SetDestination(enemyController.currentTarget);
         }
     }
+
 
     public class MoveTowardsTarget : IState
     {
         private TestEnemyController enemyController;
 
-        public MoveTowardsTarget(TestEnemyController _enemyController)
+        private Transform targetTransform;
+
+        public MoveTowardsTarget(TestEnemyController _enemyController, Transform _targetTransform)
         {
             enemyController = _enemyController;
+            targetTransform = _targetTransform;
         }
 
         void IState.OnEnter()
@@ -101,7 +134,8 @@ public class TestEnemyController : AgentCharacter
 
         void IState.Tick()
         {
-            enemyController.GetNavMeshAgent().SetDestination(enemyController.currentTarget.transform.position);
+            enemyController.currentTarget = targetTransform.position;
+            enemyController.GetNavMeshAgent().SetDestination(enemyController.currentTarget);
         }
     }
 
@@ -125,16 +159,17 @@ public class TestEnemyController : AgentCharacter
         {
             if (meleeTimer <= 0f)
             {
+                enemyController.RotateTowards(player.transform.position);
                 enemyController.Attack();
                 meleeTimer = meleeAttackCooldown;
             }
 
-            meleeAttackCooldown -= Time.deltaTime;
+            meleeTimer -= Time.deltaTime;
         }
 
         void IState.OnEnter()
         {
-            
+
         }
 
         void IState.OnExit()

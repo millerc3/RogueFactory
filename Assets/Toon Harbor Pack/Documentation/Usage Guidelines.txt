@@ -1,0 +1,83 @@
+Thank you for purchasing Toon Harbor pack!
+Very glad to have you as a customer :)
+
+
+Version 1.0
+
+	At first glance, the pack may look daunting, with over 1500 prefabs to choose from, but hopefully, 
+the folder structure and naming convention will make things easy to pick up.
+	If you install the post processing stack after importing this package, some errors might appear, depending on the version of Unity 
+that you're using. A Unity restart usually solves those issues. (if not, please re-import this pack in a project where post processing 
+stack is installed).
+
+
+
+		Naming convention:
+
+
+	The assets in this package use the "TH" prefix, in case you're using other packs from the TOON Series, to be able to easily 
+identify the origin of an asset.
+	The last letter in the name, usually is a capital letter, such as :"TH_Crane_Motor_01A". It signifies the color scheme of the asset.
+If there are more color schemes for an asset, the naming would probably continue as follows: "TH_Crane_Motor_01B", "TH_Crane_Motor_01C".
+
+	In the case of wheels of vehicles, character rig bones, and other animateable assets, the suffixes ".L" and ".R" are used. 
+For example, the rear left wheel of a van would be named: "TH_Van_01B_Wheel_R.L".
+
+
+		Prefabs:
+
+
+	The source files are contained in the "Models" folder, along with the custom mesh colliders, in the "Colliders" sub-folder. 
+Custom mesh colliders were used where the shape of the asset was too complicated to use simple "box" or "sphere" colliders.
+
+	Some prefabs have a "Mobile" version, where there was the possibility of removing geometry without altering the visual 
+appearance noticeably.
+
+	The Prefabs are structured in multiple categories. Most of the assets are modular, so some prefab categories are dedicated to
+ assembled structures, such as "Metal Structures", "Concrete Buildings", or "Ships". You can always build your own custom structures, 
+buildings and ships, using the modular assets and the possibilities are almost infinite.
+
+	The prefabs from the "Special" folder are rigged and have variable lenghts. Once placed in the scene, grab the "Cable_Tip" and 
+move it as you please.
+
+
+		Scenes:
+
+
+	There are 3 scenes included in this pack, 2 large exterior scenes with a plethora of assets and one smaller scene where the 
+interior assets are showcased. If you plan on using this pack for mobile platforms, the smaller scene would probably be a good indicator 
+for the size and scope of a mobile project scene.
+
+	To achieve the lighting effect there is a post=processing profile in use, which requires the post processing stack to be installed.
+(if you're using URP, the post processing stack isn't needed).
+	
+
+		Characters:
+
+
+	There are 6 character templates (3 male & 3 female), located in the "Characters Source" folder. The templates have customizable 
+items (clothes, accessories, skin color, ...) which you can activate/deactivate as you please, thus being able to create numerous variants.
+Some pre-made variants have been saved as prefabs in the "Characters Variants" folder.
+
+	The characters have no animations included in the package, just some poses that have been used in the promotional materials. 
+The rigging system is "Humanoid", which allows for the use of external animations, either from the Asset Store, or other external sources, 
+such as "Mixamo.com".
+A short tutorial showing the use of Mixamo animations should be included in the package description from the Asset Store page.
+
+
+		Vehicles and ships:
+
+
+	All the vehicles and ships come with interiors, detached wheels, doors and other working items.
+
+
+		Interior props:
+
+
+	This pack comes with a wide array of interior assets to help populate your game world with even more detail.
+	Some considerations regarding the use: Most of the furniture comes with extra functions and other logical mechanisms, such as: 
+functioning fridge doors, functioning microwave door, working drawers, animateable hands for clocks and many more.
+
+
+
+* If you like the pack, please review it :) *

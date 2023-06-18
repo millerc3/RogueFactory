@@ -24,6 +24,13 @@ public class ArrowProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        EntityHealthController healthController = collision.gameObject.GetComponent<EntityHealthController>();
+
+        if (healthController != null)
+        {
+            healthController.Damage(15);
+        }
+
         Destroy(gameObject);
     }
 }
