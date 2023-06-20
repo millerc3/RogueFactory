@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerCraftingController : MonoBehaviour
 {
-    private PlayerCollectionManager collection;
+    private FactoryPlayerCollectionManager collection;
     [SerializeField] private CraftingRecipeDatabase recipeDatabse;
     [SerializeField] private InventoryItemDatabase itemDatabase;
 
@@ -19,7 +19,7 @@ public class PlayerCraftingController : MonoBehaviour
 
     private void Start()
     {
-        collection = GetComponent<PlayerCollectionManager>();
+        collection = GetComponent<FactoryPlayerCollectionManager>();
 
         if (collection == null) Debug.LogError($"There is no PlayerItemCollection found in this scene!");
     }

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class DispenserBuilding : FactoryBuilding
 {
-    private PlayerCollectionManager playerCollectionManager;
+    private FactoryPlayerCollectionManager playerCollectionManager;
 
     [SerializeField] private InventoryItemData itemToDispense;
     public InventoryItemData ItemToDispense => itemToDispense;
@@ -33,7 +33,7 @@ public class DispenserBuilding : FactoryBuilding
     {
         base.Start();
 
-        playerCollectionManager = FindObjectOfType<PlayerCollectionManager>();
+        playerCollectionManager = FindObjectOfType<FactoryPlayerCollectionManager>();
 
         LocalUpdate(0);
     }

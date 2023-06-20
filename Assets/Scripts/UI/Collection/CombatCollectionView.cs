@@ -8,7 +8,7 @@ public class CombatCollectionView : MonoBehaviour
     [SerializeField] private Transform collectionViewGridTransform;
     [SerializeField] private GameObject collectedItemUIPrefab;
 
-    private PlayerCollectionManager playerCollectionManager;
+    private CollectionManager playerCollectionManager;
 
     private Dictionary<InventoryItemData, CollectedItemUI> collectedItemUIDict = new Dictionary<InventoryItemData, CollectedItemUI>();
 
@@ -17,7 +17,7 @@ public class CombatCollectionView : MonoBehaviour
 
     private void Awake()
     {
-        playerCollectionManager = FindObjectOfType<PlayerCollectionManager>();
+        playerCollectionManager = FindObjectOfType<CollectionManager>();
     }
 
     private void Update()
@@ -47,6 +47,8 @@ public class CombatCollectionView : MonoBehaviour
 
     public void HideUI()
     {
+        if (!gameObject.activeSelf) return;
+
         showTimer = float.MaxValue;
         gameObject.SetActive(false);
     }

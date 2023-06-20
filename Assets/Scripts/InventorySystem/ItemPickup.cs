@@ -65,7 +65,7 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerCollectionManager collectionManager = other.transform.GetComponentInParent<PlayerCollectionManager>();
+        CollectionManager collectionManager = other.transform.GetComponentInParent<CollectionManager>();
         if (!collectionManager) return;
 
         collectionManager.AddItemToCollection(ItemData, 1);

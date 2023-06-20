@@ -20,6 +20,7 @@ public class BuildingSystemManager : MonoBehaviour
     private void Awake()
     {
         factoryGridData = new FactoryGridData();
+        grid = FindObjectOfType<Grid>();
     }
 
     private void OnEnable()
@@ -36,7 +37,7 @@ public class BuildingSystemManager : MonoBehaviour
 
     private void Start()
     {
-        grid = FindObjectOfType<Grid>();
+        
         if (grid == null)
         {
             Debug.LogError("No Grid!");

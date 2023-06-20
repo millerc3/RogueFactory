@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CollectorBuilding : FactoryBuilding
 {
-    private PlayerCollectionManager playerCollectionManager;
+    private FactoryPlayerCollectionManager playerCollectionManager;
 
 
     #region MonoBehavior
@@ -14,7 +14,7 @@ public class CollectorBuilding : FactoryBuilding
     {
         base.Start();
 
-        playerCollectionManager = FindObjectOfType<PlayerCollectionManager>();
+        playerCollectionManager = FindObjectOfType<FactoryPlayerCollectionManager>();
 
         LocalUpdate(0);
     }

@@ -34,15 +34,15 @@ public class HotbarInventoryDisplay : InventoryDisplay
     {
         slotDictionary = new Dictionary<InventorySlot_UI, InventorySlot>();
 
-        if (slots.Length != inventorySystem.InventorySize)
+        if (slots.Length != inventoryToDisplay.InventorySize)
         {
             Debug.LogError($"Inventory slots out of sync on {gameObject}");
         }
 
-        for (int i = 0; i < inventorySystem.InventorySize; i++)
+        for (int i = 0; i < inventoryToDisplay.InventorySize; i++)
         {
-            SlotDictionary.Add(slots[i], inventorySystem.InventorySlots[i]);
-            slots[i].Init(inventorySystem.InventorySlots[i]);
+            SlotDictionary.Add(slots[i], inventoryToDisplay.InventorySlots[i]);
+            slots[i].Init(inventoryToDisplay.InventorySlots[i]);
         }
     }
 

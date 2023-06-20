@@ -25,12 +25,16 @@ public class PlayerSaveData : MonoBehaviour
     {
         playerData.PlayerFactoryPosition = playerCharacter.GetPosition();
         playerData.PlayerFactoryRotation = playerCharacter.GetRotation();
+        playerData.ValidData = true;
         saveData.PlayerData = playerData;
     }
 
     private void LoadPositionRotation(SaveData saveData)
     {
         playerData = saveData.PlayerData;
+
+        if (!playerData.ValidData) return;
+
         playerCharacter.SetPosition(playerData.PlayerFactoryPosition);
         playerCharacter.SetRotation(playerData.PlayerFactoryRotation);
     }
@@ -39,11 +43,13 @@ public class PlayerSaveData : MonoBehaviour
 [System.Serializable]
 public struct PlayerData
 {
+    public bool ValidData;
     public Vector3 PlayerFactoryPosition;
     public Quaternion PlayerFactoryRotation;
 
-    public PlayerData(Vector3 factoryPosition, Quaternion factoryRotation)
+    public PlayerData(bool validData, Vector3 factoryPosition, Quaternion factoryRotation)
     {
+        ValidData = validData;
         PlayerFactoryPosition = factoryPosition;
         PlayerFactoryRotation= factoryRotation;
     }

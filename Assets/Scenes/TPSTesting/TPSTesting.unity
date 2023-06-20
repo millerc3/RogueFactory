@@ -728,6 +728,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6686b131dae5f4e88eb428dd81a9f7, type: 3}
+--- !u!1 &193230280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193230282}
+  - component: {fileID: 193230281}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &193230281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193230280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25613aa8163998408f95339cc3a2c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &193230282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193230280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 451.4986, y: 294.54526, z: 5.4340057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202637864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &377098735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1979,18 +2023,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1251319591, guid: bd9feeb9e91800849bc241e064581632, type: 3}
-      propertyPath: currentWeaponData
-      value: 
-      objectReference: {fileID: 11400000, guid: 3915b9d4686f9a84aa473cab573de141, type: 2}
-    - target: {fileID: 445931388655827274, guid: bd9feeb9e91800849bc241e064581632, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 445931388655827274, guid: bd9feeb9e91800849bc241e064581632, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.944
-      objectReference: {fileID: 0}
     - target: {fileID: 2773356696231520635, guid: bd9feeb9e91800849bc241e064581632, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2035,10 +2067,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3151515113204235220, guid: bd9feeb9e91800849bc241e064581632, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9bcec1afe823d03448590fc63784d87b, type: 2}
     - target: {fileID: 8896515725036773373, guid: bd9feeb9e91800849bc241e064581632, type: 3}
       propertyPath: m_Name
       value: TPS_CombatCharacter
@@ -7954,35 +7982,6 @@ Transform:
   m_Father: {fileID: 241809075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2142708827 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8896515725036773373, guid: bd9feeb9e91800849bc241e064581632, type: 3}
-  m_PrefabInstance: {fileID: 690188480}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2142708828 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1251319592, guid: bd9feeb9e91800849bc241e064581632, type: 3}
-  m_PrefabInstance: {fileID: 690188480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142708827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547af4d3673b6cb4da5363d13447d765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2142708831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142708827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf55da5e616faa42a93b698ef85be49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputManager: {fileID: 2142708828}
 --- !u!4 &3584980977181689
 Transform:
   m_ObjectHideFlags: 0

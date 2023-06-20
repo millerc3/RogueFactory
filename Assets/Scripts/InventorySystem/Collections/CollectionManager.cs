@@ -1,33 +1,28 @@
 using QFSW.QC;
-using QFSW.QC.Suggestors.Tags;
+using System;
 using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using SaveLoadSystem;
 
-public class PlayerCollectionManager : MonoBehaviour
+public abstract class CollectionManager : MonoBehaviour
 {
-    public CollectionSystem Collection { get; private set; }
+    public CollectionSystem Collection { get; protected set; }
 
-    [SerializeField] private InventoryItemDatabase itemDatabase;
+    [SerializeField] protected InventoryItemDatabase itemDatabase;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Collection = new CollectionSystem();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        SaveGameManager.PostLoadGameEvent += LoadCollection;
-        SaveGameManager.PreSaveGameEvent += SaveCollection;
+
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        SaveGameManager.PostLoadGameEvent += LoadCollection;
-        SaveGameManager.PreSaveGameEvent -= SaveCollection;
+
     }
 
     public int AddItemToCollection(InventoryItemData itemToAdd, int amountToAdd)
@@ -67,20 +62,6 @@ public class PlayerCollectionManager : MonoBehaviour
 
         return Collection.RemoveItemFromCollection(itemToRemove, amountToRemove);
     }
-
-    #region SAVE/LOAD SYSTEM
-
-    public void LoadCollection(SaveData saveData)
-    {
-        Collection = saveData.PlayerCollectionData.Collection;
-    }
-
-    public void SaveCollection(SaveData saveData)
-    {
-        saveData.PlayerCollectionData.Collection = Collection;
-    }
-
-    #endregion
 }
 
 [Serializable]

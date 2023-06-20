@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611398af3c3ff724fbc1db0dc672f35d, type: 3}
   m_Name: Collector
   m_EditorClassIdentifier: 
-  Id: -1
+  Id: 7
   Name: Collector
   Description: Consumes items from the factory and puts it into your Collection
   Icon: {fileID: 21300000, guid: 33a63c60a1aed8043b8ef1db9e77682a, type: 3}
@@ -20,3 +20,4 @@ MonoBehaviour:
   PriceValue: 4
   Prefab: {fileID: 8137588061304166799, guid: 41ccfc7ab655d464ab092863b4ab8d1d, type: 3}
   factoryBuilding: {fileID: 11400000, guid: 26a07c1839e173b4abc6bde670761ec6, type: 2}
+  CanBeUsedInDispenser: 0

@@ -1,3 +1,4 @@
+using Mono.CSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -140,5 +141,14 @@ public class CollectionSystem
 
         // if we get here, we never found our item in our slots
         return false;
+    }
+
+    public void CombineWith(CollectionSystem otherCollection)
+    {
+        foreach (InventorySlot collectionSlot in otherCollection.InventorySlots)
+        {
+            Debug.Log($"Adding {collectionSlot.ItemData} to our stored collection");
+            AddItemToCollection(collectionSlot.ItemData, collectionSlot.StackSize);
+        }
     }
 }

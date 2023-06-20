@@ -9,7 +9,7 @@ public class PlayerCollectionUIController : MonoBehaviour
 {
     private MouseItemData mouseItemData;
     [SerializeField] private GameObject collectionItemPrefab;
-    public PlayerCollectionManager PlayerCollectionManager { get; private set; }
+    public FactoryPlayerCollectionManager PlayerCollectionManager { get; private set; }
 
     [SerializeField] private UIClickHandler scrollViewClickHandler;
 
@@ -19,7 +19,7 @@ public class PlayerCollectionUIController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerCollectionManager = FindObjectOfType<PlayerCollectionManager>();
+        PlayerCollectionManager = FindObjectOfType<FactoryPlayerCollectionManager>();
         mouseItemData = FindObjectOfType<MouseItemData>();
 
         scrollViewClickHandler?.onLeftClick.AddListener(OnContentWindowClick);

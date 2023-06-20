@@ -1,13 +1,6 @@
 using EasyCharacterMovement;
-using Mono.CSharp.Linq;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TestEnemyController : AgentCharacter
 {

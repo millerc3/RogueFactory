@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167430039506792178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.245}
+  m_LocalPosition: {x: 0, y: 0, z: 1.944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1510,7 +1510,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7f8b496adee38e4a9edc877d5939f5b, type: 2}
+  - {fileID: 2100000, guid: 9bcec1afe823d03448590fc63784d87b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2954,7 +2954,8 @@ GameObject:
   - component: {fileID: 2773356696231520635}
   - component: {fileID: 1251319591}
   - component: {fileID: 1251319592}
-  - component: {fileID: 8880088061265038531}
+  - component: {fileID: 2142708831}
+  - component: {fileID: 1800368878212616014}
   m_Layer: 7
   m_Name: TPS_CombatCharacter
   m_TagString: Untagged
@@ -3012,7 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547af4d3673b6cb4da5363d13447d765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8880088061265038531
+--- !u!114 &2142708831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3021,7 +3022,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8896515725036773373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56cf7d726612ff845bfd301f2c18e174, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cf55da5e616faa42a93b698ef85be49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 1251319592}
+--- !u!114 &1800368878212616014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896515725036773373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43729fef9ba405a4cae45d2e61798117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: b5782aedc15d53e48903232f2930eab6, type: 2}

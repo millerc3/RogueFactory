@@ -76,12 +76,33 @@ public class PlayerInventoryHolder : InventoryHolder
     {
         if (saveData.playerInventoryData.PrimaryInventorySystem != null)
         {
-            primaryInventorySystem = saveData.playerInventoryData.PrimaryInventorySystem;
+            // If we don't have any data stored
+            if (saveData.playerInventoryData.PrimaryInventorySystem.InventorySlots.Count == 0)
+            {
+                // put our current (presumably empty) inventory into the save data object
+                saveData.playerInventoryData.PrimaryInventorySystem = primaryInventorySystem;
+            }
+            else
+            {
+                // otherwise, grab the stored data and put it in our inventory 
+                primaryInventorySystem = saveData.playerInventoryData.PrimaryInventorySystem;
+            }
+
             OnPlayerHotbarChanged?.Invoke();
         }
         if (saveData.playerInventoryData.SecondaryInventorySystem != null)
         {
-            secondaryInventorySystem = saveData.playerInventoryData.SecondaryInventorySystem;
+            //secondaryInventorySystem = saveData.playerInventoryData.SecondaryInventorySystem;
+
+            if (saveData.playerInventoryData.PrimaryInventorySystem.InventorySlots.Count == 0)
+            {
+                saveData.playerInventoryData.SecondaryInventorySystem = secondaryInventorySystem;
+            }
+            else
+            {
+                primaryInventorySystem = saveData.playerInventoryData.PrimaryInventorySystem;
+            }
+
             OnPlayerBackpackChanged?.Invoke();
         }
     }

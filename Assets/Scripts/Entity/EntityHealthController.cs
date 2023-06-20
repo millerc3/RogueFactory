@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.Events;
-using static EntityHealthController;
 
 public class EntityHealthController : MonoBehaviour
 {

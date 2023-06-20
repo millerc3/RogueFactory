@@ -56,7 +56,7 @@ namespace SaveLoadSystem
             }
             else
             {
-                Debug.LogError($"Save file does not exist");
+                Debug.LogWarning($"Save file does not exist");
                 return false;
             }
 
@@ -65,6 +65,25 @@ namespace SaveLoadSystem
             return true;
         }
 
+        public static SaveData SoftLoadGame()
+        {
+            string fullPath = Application.persistentDataPath + SaveDirectory + Filename;
+            SaveData tempData = new SaveData();
+            if (File.Exists(fullPath))
+            {
+                string json = File.ReadAllText(fullPath);
+                tempData = JsonUtility.FromJson<SaveData>(json);
+            }
+            else
+            {
+                Debug.LogWarning($"Save file does not exist");
+                return null;
+            }
+
+            return tempData;
+        }
+
+        [Command]
         public static void DeleteSaveData()
         {
             string fullPath = Application.persistentDataPath + SaveDirectory + Filename;
@@ -72,6 +91,18 @@ namespace SaveLoadSystem
             {
                 File.Delete(fullPath);
             }
+        }
+
+        [Command]
+        public static void ClearBuildingData()
+        {
+            CurrentSaveData.FactoryPlacementSaveData?.Clear();
+        }
+
+        [Command]
+        public static void ClearCollectionData()
+        {
+            CurrentSaveData.PlayerCollectionData.Collection = new CollectionSystem();
         }
     }
 }

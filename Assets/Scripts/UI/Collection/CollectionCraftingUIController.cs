@@ -8,7 +8,7 @@ public class CollectionCraftingUIController : MonoBehaviour
 {
     [SerializeField] private GameObject craftingItemPrefab;
     [SerializeField] private CraftingRecipeDatabase recipeDatabase;
-    public PlayerCollectionManager PlayerCollectionManager { get; private set; }
+    public FactoryPlayerCollectionManager PlayerCollectionManager { get; private set; }
     public PlayerCraftingController PlayerCraftingController { get; private set; }
 
     private Dictionary<int, CraftingItemUI> craftingItemDict = new Dictionary<int, CraftingItemUI>();
@@ -17,7 +17,7 @@ public class CollectionCraftingUIController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerCollectionManager = FindObjectOfType<PlayerCollectionManager>();
+        PlayerCollectionManager = FindObjectOfType<FactoryPlayerCollectionManager>();
         PlayerCraftingController = FindObjectOfType<PlayerCraftingController>();
     }
 
