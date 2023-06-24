@@ -17,6 +17,7 @@ public class GauntletWeapon : Weapon
     [SerializeField] private GauntletCrosshair crosshair;
 
     public bool IsAttemptingToShoot { get; private set; }
+    public bool IsAttemptingToReload { get; private set; }
     private bool isReloading = false;
     private int shotCount = 0;
 
@@ -39,6 +40,9 @@ public class GauntletWeapon : Weapon
         stateMachine.AddTransition(hasAmmoState,
                                    reloadingState,
                                    () => shotCount == 0);
+        stateMachine.AddTransition(hasAmmoState,
+                                   reloadingState,
+                                   () => IsAttemptingToReload == true);
         stateMachine.AddTransition(reloadingState,
                                    hasAmmoState,
                                    () => isReloading == false);
@@ -118,12 +122,12 @@ public class GauntletWeapon : Weapon
 
     public override void OnSecondaryPressed()
     {
-        // reload?
+        IsAttemptingToReload = true;
     }
 
     public override void OnSecondaryReleased()
     {
-
+        IsAttemptingToReload = false;
     }
 
     #region States
@@ -141,6 +145,7 @@ public class GauntletWeapon : Weapon
         public void OnEnter()
         {
             print("Enter: HasAmmo");
+            shotTimer = gauntletWeapon.timeBetweenShots;
         }
 
         public void OnExit()

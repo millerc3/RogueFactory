@@ -112,6 +112,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useCullingMasks: 0
+  shotCountRadius: 0.2
+  shotCountArcLength: 2.5
+  shotCountArcStart: 3.5
+  shotCircleRadius: 0.025
+  shotCircleThickness: 0.005
 --- !u!114 &3323640823077650991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,4 +136,7 @@ MonoBehaviour:
   timeBetweenShots: 0.5
   timeToReload: 1.5
   damagePerShot: 15
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 0
   crosshair: {fileID: 9141930426795762418}

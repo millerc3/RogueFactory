@@ -28,6 +28,20 @@ MonoBehaviour:
   m_Active: 0
   overrideRenderEvent: 0
   renderEvent: 0
+--- !u!114 &-5776746901576068255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e6184d2ea958044a6434dca151c688, type: 3}
+  m_Name: SSCC
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  shader: {fileID: 4800000, guid: 62449f654265cf94e81275e55a4b1823, type: 3}
 --- !u!114 &-2401278517541482506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,8 +89,9 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1344586528338988631}
   - {fileID: -2401278517541482506}
+  - {fileID: -5776746901576068255}
   - {fileID: -6102070239711927836}
-  m_RendererFeatureMap: a9319428ad1157edf6cf292be9f1acdee4e17c77721751ab
+  m_RendererFeatureMap: a9319428ad1157edf6cf292be9f1acde615338ae4cdfd4afe4e17c77721751ab
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
