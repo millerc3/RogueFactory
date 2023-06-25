@@ -52,7 +52,7 @@ public class BuildingSystemManager : MonoBehaviour
 
     public bool CheckPlacementValidity(Vector3Int gridPosition, int selectedBuildingIndex)
     {
-        return factoryGridData.CanPlaceObjectAt(gridPosition, factoryBuildingsDB.BuildingDatabase[selectedBuildingIndex].Size);
+        return factoryGridData.CanPlaceObjectAt(gridPosition, factoryBuildingsDB.GetBuliding(selectedBuildingIndex).Size);
     }
 
     public bool IsGridPositionOpen(Vector3Int gridPosition)
@@ -62,7 +62,7 @@ public class BuildingSystemManager : MonoBehaviour
 
     public bool PlaceStructureAt(Vector3Int gridPosition, int structureId, Vector3 forward)
     {
-        return PlaceStructureAt(gridPosition, factoryBuildingsDB.BuildingDatabase[structureId], forward);
+        return PlaceStructureAt(gridPosition, factoryBuildingsDB.GetBuliding(structureId), forward);
     }
 
     public bool PlaceStructureAt(Vector3Int gridPosition, FactoryBuildingData factoryBuilding, Vector3 forward)

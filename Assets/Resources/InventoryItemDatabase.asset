@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7004f09d37062004a881da09aefd5384, type: 3}
   m_Name: InventoryItemDatabase
   m_EditorClassIdentifier: 
-  itemDatabase:
+  ObjectResourceFolderName: InventoryItemData
+  Objects:
   - {fileID: 11400000, guid: df95cd4fa5434404188305998d2b9e6b, type: 2}
   - {fileID: 11400000, guid: 927faad07ea88ef479f6bf760b232986, type: 2}
   - {fileID: 11400000, guid: 264b7f507d66c074f98d6e97869ecfbf, type: 2}
@@ -21,19 +22,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8989abbcb76e3f646aef60bfca07f782, type: 2}
   - {fileID: 11400000, guid: 11998b629f6fa62409afb22782fe00fe, type: 2}
   - {fileID: 11400000, guid: 32639244bca42d644b110372e738ff8d, type: 2}
-  ItemsAsStringList:
-  - '0: Iron'
-  - '1: Scrap Metal'
-  - '2: Conveyor Belt'
-  - '3: Forge'
-  - '4: Grabber Arm'
-  - '5: StorageBox_1x1'
-  - '6: Dispenser'
-  - '0: Iron'
-  - '1: Scrap Metal'
-  - '2: Conveyor Belt'
-  - '3: Forge'
-  - '4: Grabber Arm'
-  - '5: StorageBox_1x1'
-  - '6: Dispenser'
-  - '7: Collector'

@@ -8,9 +8,8 @@ using UnityEngine;
 /// </summary>
 
 [CreateAssetMenu(menuName = "Inventory System/Inventory Item")]
-public class InventoryItemData : ScriptableObject
+public class InventoryItemData : DatabaseObject
 {
-    public int Id = -1;
     public string Name;
     [TextArea(4,4)]
     public string Description;

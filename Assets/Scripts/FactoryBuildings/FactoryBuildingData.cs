@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class FactoryBuildingData : ScriptableObject
+[CreateAssetMenu(menuName = "New Factory Building Data")]
+public class FactoryBuildingData : DatabaseObject
 {
     public string Name;
-    public int Id = -1;
     public Vector2Int Size;
     public GameObject Prefab;
     public Sprite Sprite;

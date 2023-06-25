@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5a9c9176f95f54aa54c93bdf7e953a, type: 3}
   m_Name: Factory Buildings Database
   m_EditorClassIdentifier: 
-  BuildingDatabase:
+  ObjectResourceFolderName: FactoryBuildingData
+  Objects:
   - {fileID: 11400000, guid: 6f37dcd944c4a6547b2bc0051a660a46, type: 2}
   - {fileID: 11400000, guid: cf26dc006080e434badec61219fb3f11, type: 2}
   - {fileID: 11400000, guid: fee962f5e6c0191439c88e02ad37e1da, type: 2}

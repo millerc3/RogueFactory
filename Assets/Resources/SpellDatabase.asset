@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71140f54283f42c4a8f262c7ccf0e328, type: 3}
-  m_Name: Spear
+  m_Script: {fileID: 11500000, guid: f0c355009f3942b4b8bdfec64cf2c3e8, type: 3}
+  m_Name: SpellDatabase
   m_EditorClassIdentifier: 
-  Id: 3
-  Name: 
-  Description: 
-  Sprite: {fileID: 0}
-  Prefab: {fileID: 0}
+  ObjectResourceFolderName: SpellData
+  Objects:
+  - {fileID: 11400000, guid: e6bc4c5d65fa4434fa7fe9d07b3315d2, type: 2}

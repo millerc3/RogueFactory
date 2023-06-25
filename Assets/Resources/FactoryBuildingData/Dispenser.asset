@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f74ab838344ec6418281cc525115631, type: 3}
-  m_Name: Arm
+  m_Name: Dispenser
   m_EditorClassIdentifier: 
-  Name: Arm
-  Id: 0
+  Id: 4
+  Name: Dispenser
   Size: {x: 1, y: 1}
-  Prefab: {fileID: 2840661534784773973, guid: 6ec8c1fb4bd5e564cb1319e2378f8d27, type: 3}
-  Sprite: {fileID: 21300000, guid: 5d71deb75cda8264e8b13b604dba2cd8, type: 3}
-  previewPrefab: {fileID: 2840661534784773973, guid: 44a9538b48a21b647b37e1b0ae809760, type: 3}
-  InventoryItem: {fileID: 11400000, guid: fc4d0bd24007c4947bc6c3432f11ae94, type: 2}
+  Prefab: {fileID: 3695920306759732002, guid: 16bcd1cbc5c02514fb514240477a478f, type: 3}
+  Sprite: {fileID: 21300000, guid: f1bcbfe9f14462b4691628802bd93aa4, type: 3}
+  previewPrefab: {fileID: 3695920306759732002, guid: 9661240efbd0a5740a08095daf751aa6, type: 3}
+  InventoryItem: {fileID: 11400000, guid: 11998b629f6fa62409afb22782fe00fe, type: 2}

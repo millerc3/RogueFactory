@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f74ab838344ec6418281cc525115631, type: 3}
-  m_Name: Collector
+  m_Name: Belt
   m_EditorClassIdentifier: 
-  Name: Collector
-  Id: 5
+  Id: 1
+  Name: Belt
   Size: {x: 1, y: 1}
-  Prefab: {fileID: 8137588061304166799, guid: 0b34e4a8e6f64c6428d747111d9d5441, type: 3}
-  Sprite: {fileID: 21300000, guid: 33a63c60a1aed8043b8ef1db9e77682a, type: 3}
-  previewPrefab: {fileID: 3695920306759732002, guid: 9ee8c10d13644284a894d4618735953f, type: 3}
-  InventoryItem: {fileID: 11400000, guid: 32639244bca42d644b110372e738ff8d, type: 2}
+  Prefab: {fileID: 2934946838959446697, guid: bf722f751eaf1b345a2bb712d55d12b8, type: 3}
+  Sprite: {fileID: 21300000, guid: 42c31cf11b3435743856fbaa15d73346, type: 3}
+  previewPrefab: {fileID: 2934946838959446697, guid: 503f55fe79f54194d9f152080b227cd2, type: 3}
+  InventoryItem: {fileID: 11400000, guid: 264b7f507d66c074f98d6e97869ecfbf, type: 2}

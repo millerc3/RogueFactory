@@ -156,8 +156,8 @@ public class FactoryBuilderController : MonoBehaviour
     public void StartPlacement(int Id)
     {
         StopPlacement();
-        selectedBuildingIndex = factoryBuildingsDB.BuildingDatabase.FindIndex(data => data.Id == Id);
-        FactoryBuildingData selectedBuilding = factoryBuildingsDB.BuildingDatabase[selectedBuildingIndex];
+        selectedBuildingIndex = factoryBuildingsDB.GetBuliding(Id).Id;
+        FactoryBuildingData selectedBuilding = factoryBuildingsDB.GetBuliding(selectedBuildingIndex);
         if (selectedBuildingIndex < 0)
         {
             Debug.LogError($"No ID found: {Id}");
