@@ -22,9 +22,6 @@ public class GauntletCrosshair : WeaponCrosshair
     {
         shotCount = _shotsRemaining;
         maxShots = _maxShots;
-
-        print($"MaxShots={_maxShots}");
-        print($"ShotCount={_shotsRemaining}");
     }
 
     protected override void OnDrawCommand()

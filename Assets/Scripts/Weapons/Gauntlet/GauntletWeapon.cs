@@ -76,7 +76,6 @@ public class GauntletWeapon : Weapon
     private void ShootGauntlet()
     {
         shotCount--;
-        print($"Shoot");
 
         FireRaycast();
         CreateShotEffects();
@@ -95,7 +94,7 @@ public class GauntletWeapon : Weapon
                             out hit,
                             300f))
         {
-            Destroy(Instantiate(shotImpactEffectPrefab, hit.point, Quaternion.identity), 2f);
+            Destroy(Instantiate(shotImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal)), 2f);
 
             EntityHealthController healthController = hit.transform.GetComponent<EntityHealthController>();
             if (healthController == null) return;
@@ -144,7 +143,6 @@ public class GauntletWeapon : Weapon
 
         public void OnEnter()
         {
-            print("Enter: HasAmmo");
             shotTimer = gauntletWeapon.timeBetweenShots;
         }
 
@@ -178,7 +176,6 @@ public class GauntletWeapon : Weapon
 
         public void OnEnter()
         {
-            print("Enter: Reloading");
             gauntletWeapon.isReloading = true;
         }
 

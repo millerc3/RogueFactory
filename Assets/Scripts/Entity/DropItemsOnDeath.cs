@@ -29,7 +29,6 @@ public class DropItemsOnDeath : MonoBehaviour
             f = Random.Range(0f, 1f);
             if (f <= item.ChanceToDrop)
             {
-                print($"Dropping {item.ItemToDrop.Name}");
                 ItemPickup worldItem = Instantiate(worldObjectPrefab, transform.position + Vector3.up, Quaternion.identity).GetOrAddComponent<ItemPickup>();
                 worldItem.SetItem(item.ItemToDrop, Random.Range(1, 6));
             }
