@@ -15,6 +15,7 @@ public static class SceneLoader
         MainMenu,
         TPSTesting,
         LoadingScreen,
+        LargeWorldTest,
     }
 
     private static Action OnLoaderCallback;
