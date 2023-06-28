@@ -11,6 +11,11 @@ public class DropItemsOnDeath : MonoBehaviour
 
     [SerializeField] private GameObject worldObjectPrefab;
 
+    private void Awake()
+    {
+        if (healthController == null) healthController = GetComponent<EntityHealthController>();
+    }
+
     private void OnEnable()
     {
         healthController.OnEntityDied  += DropItems;
@@ -40,6 +45,7 @@ public class DropItemsOnDeath : MonoBehaviour
 public struct DropItemChance
 {
     public InventoryItemData ItemToDrop;
+    [Tooltip("Percent (0-1) that this item will drop")]
     public float ChanceToDrop;
 
     public DropItemChance(InventoryItemData itemToDrop, float chanceToDrop)

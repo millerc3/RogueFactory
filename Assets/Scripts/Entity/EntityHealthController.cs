@@ -12,6 +12,9 @@ public class EntityHealthController : MonoBehaviour
     public delegate void EntityDied();
     public EntityDied OnEntityDied;
 
+    public delegate void DamageAtPoint(int amount, Vector3? point);
+    public DamageAtPoint OnDamageAtPoint;
+
     protected virtual void Awake()
     {
         SetHealth(MaxHealth);
@@ -33,6 +36,13 @@ public class EntityHealthController : MonoBehaviour
     public virtual void Damage(int damage)
     {
         SetHealth(Mathf.Max(0, Health - damage));
+        OnDamageAtPoint?.Invoke(damage, null);
+    }
+
+    public virtual void DamageAt(int damage, Vector3 position)
+    {
+        SetHealth(Mathf.Max(0, Health - damage));
+        OnDamageAtPoint?.Invoke(damage, position);
     }
 
     public virtual void Heal(int amount)
