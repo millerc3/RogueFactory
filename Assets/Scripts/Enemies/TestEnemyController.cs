@@ -1,13 +1,13 @@
 using EasyCharacterMovement;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class TestEnemyController : AgentCharacter
 {
     private StateMachine stateMachine;
-
     private Vector3 currentTarget;
-
     private TPSCombatCharacterController player;
 
     protected override void OnAwake()
@@ -170,6 +170,9 @@ public class TestEnemyController : AgentCharacter
 
         }
     }
+
+
+    
 
     #endregion
 }

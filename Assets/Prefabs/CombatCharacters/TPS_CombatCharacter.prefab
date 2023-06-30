@@ -2571,6 +2571,7 @@ GameObject:
   - component: {fileID: 3424179391264814400}
   - component: {fileID: 3424179391264814463}
   - component: {fileID: 8098236418456838350}
+  - component: {fileID: 2731749692438117276}
   m_Layer: 7
   m_Name: Third Person Character
   m_TagString: Player
@@ -2727,6 +2728,19 @@ MonoBehaviour:
   _standingDownwardForceScale: 1
   _camera: {fileID: 3424179392522150681}
   inputManager: {fileID: 1251319592}
+--- !u!114 &2731749692438117276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424179391264814461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05096adfc44e45f45b8cc85a1973f50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <EntityData>k__BackingField: {fileID: 11400000, guid: 024c47ff7ff4ca049b4d3acc3cc31a05, type: 2}
 --- !u!1 &3424179392522150679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,6 +3015,9 @@ MonoBehaviour:
   weaponParent: {fileID: 1136409694}
   projectileStartPoint: {fileID: 6039749485791184022}
   weaponDatabase: {fileID: 11400000, guid: 7c8b245cc9e829749a55c7f5c22ab4aa, type: 2}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!114 &1251319592
 MonoBehaviour:
   m_ObjectHideFlags: 0

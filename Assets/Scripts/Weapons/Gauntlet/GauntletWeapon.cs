@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static GauntletWeapon;
 
 [RequireComponent(typeof(GauntletWeapon))]
 public class GauntletWeapon : Weapon
@@ -11,14 +12,14 @@ public class GauntletWeapon : Weapon
     [SerializeField] private GameObject shotImpactEffectPrefab;
     [SerializeField] private int shotsPerMag = 3;
     [SerializeField] private float timeBetweenShots = .5f;
-    [SerializeField] private float timeToReload = 1.5f;
+    [SerializeField] public float TimeToReload = 1.5f;
     [SerializeField] private int damagePerShot = 15;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GauntletCrosshair crosshair;
 
     public bool IsAttemptingToShoot { get; private set; }
     public bool IsAttemptingToReload { get; private set; }
-    private bool isReloading = false;
+    public bool IsReloading { get; private set; }
     private int shotCount = 0;
 
     private StateMachine stateMachine;
@@ -26,9 +27,17 @@ public class GauntletWeapon : Weapon
     public delegate void GauntletShot();
     public GauntletShot OnGauntletShot;
 
+    public delegate void GauntletStartReload();
+    public GauntletStartReload OnGauntletStartReload;
+
+    public delegate void GauntletFinishReload();
+    public GauntletFinishReload OnGauntletFinishReload;
+
+
     protected override void Awake()
     {
         base.Awake();
+        IsReloading = false;
 
         stateMachine = new StateMachine();
 
@@ -42,10 +51,10 @@ public class GauntletWeapon : Weapon
                                    () => shotCount == 0);
         stateMachine.AddTransition(hasAmmoState,
                                    reloadingState,
-                                   () => IsAttemptingToReload == true);
+                                   () => IsAttemptingToReload == true && shotCount < shotsPerMag);
         stateMachine.AddTransition(reloadingState,
                                    hasAmmoState,
-                                   () => isReloading == false);
+                                   () => IsReloading == false);
         stateMachine.SetState(hasAmmoState);
     }
 
@@ -56,7 +65,8 @@ public class GauntletWeapon : Weapon
         IsAttemptingToShoot = false;
         shotCount = shotsPerMag;
 
-        (crosshair as GauntletCrosshair).SetShotCount(shotCount, shotsPerMag);
+        crosshair.SetGauntlet(this);
+        crosshair.SetShotCount(shotCount, shotsPerMag);
     }
 
     protected override void Update()
@@ -79,7 +89,7 @@ public class GauntletWeapon : Weapon
 
         FireRaycast();
         CreateShotEffects();
-        (crosshair as GauntletCrosshair).SetShotCount(shotCount, shotsPerMag);
+        crosshair.SetShotCount(shotCount, shotsPerMag);
 
         OnGauntletShot?.Invoke();
     }
@@ -92,7 +102,8 @@ public class GauntletWeapon : Weapon
         if (Physics.Raycast(projectileStartPoint.position,
                             dir,
                             out hit,
-                            300f))
+                            300f,
+                            hitLayers))
         {
             Destroy(Instantiate(shotImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal)), 2f);
 
@@ -176,21 +187,23 @@ public class GauntletWeapon : Weapon
 
         public void OnEnter()
         {
-            gauntletWeapon.isReloading = true;
+            gauntletWeapon.IsReloading = true;
+            gauntletWeapon.OnGauntletStartReload?.Invoke();
         }
 
         public void OnExit()
         {
             gauntletWeapon.shotCount = gauntletWeapon.shotsPerMag;
-            (gauntletWeapon.crosshair as GauntletCrosshair).SetShotCount(gauntletWeapon.shotCount, 
+            gauntletWeapon.crosshair.SetShotCount(gauntletWeapon.shotCount, 
                                                                          gauntletWeapon.shotsPerMag);
+            gauntletWeapon.OnGauntletFinishReload?.Invoke();
         }
 
         public void Tick()
         {
-            if (timer >= gauntletWeapon.timeToReload)
+            if (timer >= gauntletWeapon.TimeToReload)
             {
-                gauntletWeapon.isReloading = false;
+                gauntletWeapon.IsReloading = false;
                 timer = 0f;
             }
 

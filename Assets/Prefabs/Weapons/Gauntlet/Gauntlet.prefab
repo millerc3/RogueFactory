@@ -119,6 +119,8 @@ MonoBehaviour:
   shotCountArcStart: 3.5
   shotCircleRadius: 0.025
   shotCircleThickness: 0.005
+  reloadArcRadius: 0.103
+  reloadArcThickness: 0.0125
 --- !u!114 &3323640823077650991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,11 +138,11 @@ MonoBehaviour:
   shotImpactEffectPrefab: {fileID: 7373477714973167854, guid: 067321353c4bc8a4f990a622fb82d325, type: 3}
   shotsPerMag: 7
   timeBetweenShots: 0.25
-  timeToReload: 1
+  TimeToReload: 1.5
   damagePerShot: 8
   hitLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   crosshair: {fileID: 9141930426795762418}
 --- !u!114 &5696686914548854139
 MonoBehaviour:
@@ -167,7 +169,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.049
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -211,7 +213,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

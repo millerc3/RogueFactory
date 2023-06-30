@@ -19,6 +19,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private Transform weaponParent;
     [SerializeField] private Transform projectileStartPoint;
     [SerializeField] private WeaponDatabase weaponDatabase;
+    [SerializeField] private LayerMask targetLayers;
 
     
 
@@ -82,7 +83,7 @@ public class PlayerCombatController : MonoBehaviour
     private void GetTargetFromCameraLook()
     {
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, 500f))
+        if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, 500f, targetLayers))
         {
             TargetPoint = hit.point;
         }

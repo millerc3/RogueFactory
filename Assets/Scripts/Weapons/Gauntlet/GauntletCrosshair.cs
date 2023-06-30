@@ -15,13 +15,37 @@ public class GauntletCrosshair : WeaponCrosshair
     [SerializeField][Range(.0001f, 1f)] private float shotCircleRadius = .025f;
     [SerializeField][Range(.0001f, 1f)] private float shotCircleThickness = .005f;
 
+    [SerializeField][Range(.0001f, 1f)] private float reloadArcRadius = .0125f;
+    [SerializeField][Range(.0001f, 1f)] private float reloadArcThickness = .0125f;
+
+    private GauntletWeapon gauntlet;
+
     private int shotCount;
     private int maxShots;
+    private float reloadingTimer = 100f;
 
     public void SetShotCount(int _shotsRemaining, int _maxShots)
     {
         shotCount = _shotsRemaining;
         maxShots = _maxShots;
+    }
+
+    public void SetGauntlet(GauntletWeapon _gauntlet)
+    {
+        gauntlet = _gauntlet;
+
+        gauntlet.OnGauntletStartReload += () => reloadingTimer = 0f;
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        gauntlet.OnGauntletStartReload += () => reloadingTimer = 0f;
     }
 
     protected override void OnDrawCommand()
@@ -48,6 +72,15 @@ public class GauntletCrosshair : WeaponCrosshair
                 Draw.Disc(origin, shotCircleRadius, Color.white);
                 Draw.Ring(origin, shotCircleRadius, shotCircleThickness, Color.red);
             }
+        }
+
+        if (gauntlet.IsReloading)
+        {
+            float t = reloadingTimer / gauntlet.TimeToReload / 2f;
+            float angleRad = Mathf.Lerp(shotCountArcStart, shotCountArcStart + shotCountArcLength, t);
+            Draw.Arc(reloadArcRadius, reloadArcThickness, shotCountArcStart, angleRad, ArcEndCap.Round, Color.white);
+
+            reloadingTimer += Time.deltaTime;
         }
 
         //Vector3 pos = Vector3.zero;

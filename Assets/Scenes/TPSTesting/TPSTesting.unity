@@ -1188,6 +1188,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1873525440582643369, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1873525440582643382, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_Name
       value: Hermit Robot Red (4)
@@ -1280,6 +1284,10 @@ PrefabInstance:
     - target: {fileID: 1246311662741730316, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873525440582643369, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1873525440582643382, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_Name
@@ -1460,7 +1468,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TPS_CombatCharacter
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3223224072187687067, guid: bd9feeb9e91800849bc241e064581632, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd9feeb9e91800849bc241e064581632, type: 3}
 --- !u!4 &741061337 stripped
 Transform:
@@ -2612,6 +2621,10 @@ PrefabInstance:
       value: Speed_Boost
       objectReference: {fileID: 0}
     - target: {fileID: 1149959625294729365, guid: 841fe6ce2d86be344903baaffe1f00f6, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149959625294729365, guid: 841fe6ce2d86be344903baaffe1f00f6, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2657,6 +2670,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1149959625294729366, guid: 841fe6ce2d86be344903baaffe1f00f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149959626173298331, guid: 841fe6ce2d86be344903baaffe1f00f6, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1149959626173298331, guid: 841fe6ce2d86be344903baaffe1f00f6, type: 3}
@@ -4107,6 +4124,10 @@ PrefabInstance:
       value: Slow_Zone
       objectReference: {fileID: 0}
     - target: {fileID: 3456292712028358216, guid: d2b181b44b969284886f0778f7d6b8a8, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456292712028358216, guid: d2b181b44b969284886f0778f7d6b8a8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5225,6 +5246,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1873525440582643369, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1873525440582643382, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_Name
       value: Hermit Robot Red (6)
@@ -5831,6 +5856,10 @@ PrefabInstance:
     - target: {fileID: 1246311662741730316, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873525440582643369, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1873525440582643382, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_Name
@@ -6601,6 +6630,10 @@ PrefabInstance:
     - target: {fileID: 1246311662741730316, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873525440582643369, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1873525440582643382, guid: a2e76c9be0ea7ef4990434f881325b5b, type: 3}
       propertyPath: m_Name

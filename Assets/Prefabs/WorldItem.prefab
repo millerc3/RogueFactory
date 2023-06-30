@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4215589227252130486}
   - component: {fileID: 5857141344119105347}
   - component: {fileID: 2559633372304897065}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WorldItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickupRadius: 1
   ItemData: {fileID: 0}
+  StoredItemCount: 1
   itemSaveData:
     ItemData: {fileID: 0}
     Position: {x: 0, y: 0, z: 0}
