@@ -55,4 +55,9 @@ public class EntityHealthController : MonoBehaviour
         OnEntityDied?.Invoke();
         Destroy(gameObject);
     }
+
+    public virtual void Kill()
+    {
+        Die();
+    }
 }

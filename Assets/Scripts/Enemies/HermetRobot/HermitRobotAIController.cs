@@ -1,8 +1,11 @@
 using EasyCharacterMovement;
+using Mono.CSharp;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.UI.Image;
@@ -37,7 +40,17 @@ public class HermitRobotAIController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnpoint;
     [SerializeField] private float rangedAttackCooldown = 3f;
+    [SerializeField] private float fleeRadius = 8f;
 
+    [Header("Defending State Presets")]
+    [SerializeField] private float defendTime = 4f;
+    [SerializeField] private GameObject shieldPrefab;
+    [SerializeField] private float damageChargeThresholdForDefense = 25f;
+    private float damageCharge = 0f;
+    [SerializeField] private float damageChargeDecreaseRate = 1f;
+    [SerializeField] private int numberOfDefenseShields = 1;
+    private int numberOfShieldsRemaining;
+     
 
     private void Awake()
     {
@@ -51,10 +64,15 @@ public class HermitRobotAIController : MonoBehaviour
     {
         stateMachine.Tick();
         EntityTarget = CheckForEntityInRadius();
+        if (damageCharge > 0f)
+        {
+            damageCharge = Mathf.Max(0f, damageCharge - damageChargeDecreaseRate * Time.deltaTime);
+        }
     }
 
     private void Start()
     {
+        numberOfShieldsRemaining = numberOfDefenseShields;
         IsOnHighAlert = false;
     }
 
@@ -78,6 +96,8 @@ public class HermitRobotAIController : MonoBehaviour
         var chaseState = new Chase_s(agentCharacter.GetNavMeshAgent(), this);
         var rangedState = new RangedAggression_s(agentCharacter.GetNavMeshAgent(), this);
 
+        var defendState = new Defending_s(agentCharacter.GetNavMeshAgent(), this);
+
         // Assign states
         stateMachine.AddTransition(idleState,
                                    wanderState,
@@ -100,6 +120,12 @@ public class HermitRobotAIController : MonoBehaviour
         stateMachine.AddTransition(rangedState,
                                    chaseState,
                                    () => Vector3.Distance(EntityTarget.transform.position, transform.position) > minRangedAgressionRadius);
+
+        stateMachine.AddAnyTransition(defendState,
+                                      () => numberOfShieldsRemaining > 0 && damageCharge >= damageChargeThresholdForDefense);
+        stateMachine.AddTransition(defendState,
+                                   idleState,
+                                   () => !defendState.IsDefending);
 
         // Set Default state
         stateMachine.SetState(idleState);
@@ -151,6 +177,8 @@ public class HermitRobotAIController : MonoBehaviour
     private void TookDamageAtPoint(int amount, Vector3? position)
     {
         IsOnHighAlert = true;
+
+        damageCharge += amount;
     }
 
     private void UpdateStateText(string stateString)
@@ -307,6 +335,8 @@ public class HermitRobotAIController : MonoBehaviour
         private Transform projectileSpawnpoint;
         private float attackCooldown = float.MaxValue;
         private float attackCooldownTimer = 0f;
+        private float fleeRadius;
+        public bool IsFleeing = false;
 
 
         public RangedAggression_s(NavMeshAgent _agent, HermitRobotAIController _aiController)
@@ -317,11 +347,13 @@ public class HermitRobotAIController : MonoBehaviour
             projectileSpawnpoint = aiController.projectileSpawnpoint;
             attackCooldown = aiController.rangedAttackCooldown;
             attackCooldownTimer = attackCooldown;
+            fleeRadius = aiController.fleeRadius;
         }
 
         public void OnEnter()
         {
             aiController.IsOnHighAlert = true;
+            IsFleeing = false;
         }
 
         public void OnExit()
@@ -331,7 +363,25 @@ public class HermitRobotAIController : MonoBehaviour
 
         public void Tick()
         {
-            if (attackCooldownTimer >= attackCooldown)
+            float d = Vector3.Distance(aiController.transform.position, aiController.EntityTarget.transform.position);
+
+            // if we arent fleeing, and our distance is within the flee radius, start fleeing
+            if (d <= fleeRadius)
+            {
+                Transform targetTransform = aiController.EntityTarget.transform;
+                Vector3 dir = agent.transform.position - targetTransform.position;
+                // Pick a spot 45 degrees away from the player's forward (towards self)
+                // set that as the destination
+                agent.SetDestination(dir * fleeRadius * 1.5f);
+                IsFleeing = true;
+            }
+            else
+            {
+                IsFleeing = false;
+            }
+
+            // If we arent fleeing, and our cooldown is good, we can shoot
+            if (!IsFleeing && attackCooldownTimer >= attackCooldown)
             {
                 LookAtTarget();
                 ShootAtTarget();
@@ -369,7 +419,65 @@ public class HermitRobotAIController : MonoBehaviour
     ///  * Health is low and hasn't received damage in X seconds (punish player for not finishing off enemy)
     ///  * Stop moving and take considerably less damage
     /// </summary>
-    public class Defending_s { }
+    public class Defending_s : IState
+    {
+        private NavMeshAgent agent;
+        private HermitRobotAIController aiController;
+        private GameObject shieldPrefab;
+        private float defendTime;
+        private float defendTimer;
+        EntityHealthController shieldHealthController;
+
+        public bool IsDefending = true;
+
+
+        public Defending_s(NavMeshAgent _agent, HermitRobotAIController _aiController)
+        {
+            agent = _agent;
+            aiController = _aiController;
+            defendTime = aiController.defendTime;
+            shieldPrefab = aiController.shieldPrefab;
+        }
+
+        public void OnEnter()
+        {
+            agent.SetDestination(agent.transform.position);
+            defendTimer = 0f;
+            IsDefending = true;
+
+            shieldHealthController = Instantiate(shieldPrefab, agent.transform.position, Quaternion.identity).GetComponent<EntityHealthController>();
+            shieldHealthController.OnEntityDied += OnShieldDied;
+            aiController.numberOfShieldsRemaining--;
+        }
+
+        public void OnExit()
+        {
+
+        }
+
+        public void Tick()
+        {
+            // If we run out of time, kill the shield
+            if (defendTimer >= defendTime)
+            {
+                if (shieldHealthController != null)
+                {
+                    shieldHealthController?.Kill();
+                }
+
+                // we are no longer defending
+                IsDefending = false;
+            }
+
+            defendTimer += Time.deltaTime;
+        }
+
+        private void OnShieldDied()
+        {
+            // If the shield breaks, we are no longer defending
+            IsDefending = false;
+        }
+    }
 
     #endregion
 }
