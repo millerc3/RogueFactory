@@ -18,6 +18,8 @@ public class StateMachine
     // Nice helper to just initialize an empty list of transitions
     private static List<Transition> EmptyTransitions = new List<Transition>(0);
 
+    public delegate void StateChanged(string stateName);
+    public StateChanged OnStateChanged;
 
     public void Tick()
     {
@@ -44,6 +46,7 @@ public class StateMachine
         }
 
         currentState.OnEnter();
+        OnStateChanged?.Invoke(state.ToString());
     }
 
     public void AddTransition(IState fromState, IState toState, Func<bool> predicate)

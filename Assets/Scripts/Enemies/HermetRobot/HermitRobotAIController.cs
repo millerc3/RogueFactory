@@ -13,6 +13,7 @@ public class HermitRobotAIController : MonoBehaviour
     [SerializeField] private AgentCharacter agentCharacter;
     [SerializeField] private EntityHealthController healthController;
     private StateMachine stateMachine;
+    [SerializeField] private TMP_Text currentStateText;
 
     [Header("Idle State Presets")]
     [SerializeField] private float minIdleTime = 1f;
@@ -31,7 +32,12 @@ public class HermitRobotAIController : MonoBehaviour
     private List<Entity> enemiesInAwarenessRadius = new List<Entity>();
     public Entity EntityTarget { get; private set; }
 
-    [SerializeField] private TMP_Text currentStateText;
+    [Header("Ranged Aggression State Presets")]
+    [SerializeField] private float minRangedAgressionRadius = 25f;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawnpoint;
+    [SerializeField] private float rangedAttackCooldown = 3f;
+
 
     private void Awake()
     {
@@ -54,12 +60,14 @@ public class HermitRobotAIController : MonoBehaviour
 
     private void OnEnable()
     {
-        healthController.OnDamageAtPoint += TookDamageAtPoint; 
+        healthController.OnDamageAtPoint += TookDamageAtPoint;
+        stateMachine.OnStateChanged += UpdateStateText;
     }
 
     private void OnDisable()
     {
         healthController.OnDamageAtPoint -= TookDamageAtPoint;
+        stateMachine.OnStateChanged -= UpdateStateText;
     }
 
     private void AssignStateMachineStates()
@@ -68,7 +76,7 @@ public class HermitRobotAIController : MonoBehaviour
         var idleState = new Idle_s(minIdleTime, maxIdleTime);
         var wanderState = new Wander_s(agentCharacter.GetNavMeshAgent(), maxWanderRadius, agentCharacter.GetPosition(), maxWanderTime);
         var chaseState = new Chase_s(agentCharacter.GetNavMeshAgent(), this);
-
+        var rangedState = new RangedAggression_s(agentCharacter.GetNavMeshAgent(), this);
 
         // Assign states
         stateMachine.AddTransition(idleState,
@@ -86,9 +94,16 @@ public class HermitRobotAIController : MonoBehaviour
         stateMachine.AddTransition(chaseState,
                                    idleState,
                                    () => EntityTarget == null);
+        stateMachine.AddTransition(chaseState,
+                                   rangedState,
+                                   () => Vector3.Distance(EntityTarget.transform.position, transform.position) <= minRangedAgressionRadius);
+        stateMachine.AddTransition(rangedState,
+                                   chaseState,
+                                   () => Vector3.Distance(EntityTarget.transform.position, transform.position) > minRangedAgressionRadius);
 
         // Set Default state
         stateMachine.SetState(idleState);
+        UpdateStateText(idleState.ToString());
     }
 
     private Entity CheckForEntityInRadius()
@@ -136,6 +151,13 @@ public class HermitRobotAIController : MonoBehaviour
     private void TookDamageAtPoint(int amount, Vector3? position)
     {
         IsOnHighAlert = true;
+    }
+
+    private void UpdateStateText(string stateString)
+    {
+        if (currentStateText == null) return;
+
+        currentStateText.text = stateString;
     }
 
     #region States
@@ -277,7 +299,62 @@ public class HermitRobotAIController : MonoBehaviour
     ///  * Close enough to target for ranged attacks, but too far for melee
     ///  * Moving within radius of player to maintain ranged distance
     /// </summary>
-    public class RangedAggression_s { }
+    public class RangedAggression_s : IState
+    {
+        private NavMeshAgent agent;
+        private HermitRobotAIController aiController;
+        private GameObject projectilePrefab;
+        private Transform projectileSpawnpoint;
+        private float attackCooldown = float.MaxValue;
+        private float attackCooldownTimer = 0f;
+
+
+        public RangedAggression_s(NavMeshAgent _agent, HermitRobotAIController _aiController)
+        {
+            agent = _agent;
+            aiController = _aiController;
+            projectilePrefab = aiController.projectilePrefab;
+            projectileSpawnpoint = aiController.projectileSpawnpoint;
+            attackCooldown = aiController.rangedAttackCooldown;
+            attackCooldownTimer = attackCooldown;
+        }
+
+        public void OnEnter()
+        {
+            aiController.IsOnHighAlert = true;
+        }
+
+        public void OnExit()
+        {
+
+        }
+
+        public void Tick()
+        {
+            if (attackCooldownTimer >= attackCooldown)
+            {
+                LookAtTarget();
+                ShootAtTarget();
+                attackCooldownTimer = 0f;
+            }
+
+            attackCooldownTimer += Time.deltaTime;
+        }
+
+        private void LookAtTarget()
+        {
+            if (aiController.EntityTarget == null) return;
+
+            agent.transform.LookAt(aiController.EntityTarget.transform);
+        }
+
+        private void ShootAtTarget()
+        {
+            if (aiController.EntityTarget == null) return;
+
+            Instantiate(projectilePrefab, projectileSpawnpoint.position, projectileSpawnpoint.rotation);
+        }
+    }
 
     /// <summary>
     /// MeleeAggression_s
