@@ -110,7 +110,7 @@ public class GauntletWeapon : Weapon
             EntityHealthController healthController = hit.transform.GetComponent<EntityHealthController>();
             if (healthController == null) return;
 
-            healthController.Damage(damagePerShot);
+            healthController.DamageAt(damagePerShot, hit.point);
 
         }
     }

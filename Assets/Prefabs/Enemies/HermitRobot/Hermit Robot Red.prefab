@@ -480,11 +480,16 @@ MonoBehaviour:
   awarenessRadius: 20
   highAlertAwarenessRadius: 50
   enemyTeams: 1
-  minRangedAgressionRadius: 25
+  rangedAgressionRadius: 25
   projectilePrefab: {fileID: 1960490209821794912, guid: 9e1d42dfe069bf645ace77c30a6de933, type: 3}
   projectileSpawnpoint: {fileID: 1906168026604896844}
   rangedAttackCooldown: 3
   fleeRadius: 8
+  meleeAttackEffectPrefab: {fileID: 1343769703580520755, guid: 2a95679fbeea74f4b8ed99ad9f12c8fd, type: 3}
+  meleeAttackCooldown: 2
+  meleeAggressionRAdius: 8
+  meleeAttackRadius: 2
+  meleeAttackDamage: 10
   defendTime: 4
   shieldPrefab: {fileID: 8802057779721319780, guid: ed1e8362a54497d459ee4b061c8fe0ec, type: 3}
   damageChargeThresholdForDefense: 25
@@ -792,7 +797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5785625378277613857
 RectTransform:
   m_ObjectHideFlags: 0
