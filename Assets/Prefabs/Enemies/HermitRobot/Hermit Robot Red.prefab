@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 1873525440582643369}
   - component: {fileID: 1873525440582643370}
   - component: {fileID: 1873525440582643371}
+  - component: {fileID: 719732098600178171}
   m_Layer: 0
   m_Name: Hermit Robot Red
   m_TagString: Untagged
@@ -295,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 1873525440582643382}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9bf588f25cf3b904996a0fdea19542f2, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2df0ceed02ae52149a2e22f8d0331e76, type: 2}
+  m_Controller: {fileID: 9100000, guid: 02d8c2ea3f1df9c44ad83724d924d428, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -470,6 +471,9 @@ MonoBehaviour:
   agentCharacter: {fileID: 2236888275943250514}
   healthController: {fileID: 1873525440582643368}
   currentStateText: {fileID: 4781082398809686431}
+  damageMaterial: {fileID: 2100000, guid: 8f00bde2c4e76407f9e853cd7cba5c25, type: 2}
+  baseMaterial: {fileID: 2100000, guid: 459a89bcdfa1f144fbab99b7bcf20d10, type: 2}
+  meshRenderer: {fileID: 4248487468885851360}
   minIdleTime: 1
   maxIdleTime: 5
   maxWanderRadius: 15
@@ -560,6 +564,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &719732098600178171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873525440582643382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4193b63fc527e34990272b74869432b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5164473246612483702}
+  healthController: {fileID: 1873525440582643368}
+  aiController: {fileID: 936223528007904034}
+  character: {fileID: 2236888275943250514}
 --- !u!1 &2040795607477498074
 GameObject:
   m_ObjectHideFlags: 0

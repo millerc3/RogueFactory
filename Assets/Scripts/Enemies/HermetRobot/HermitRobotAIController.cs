@@ -18,6 +18,9 @@ public class HermitRobotAIController : MonoBehaviour
     [SerializeField] private EntityHealthController healthController;
     private StateMachine stateMachine;
     [SerializeField] private TMP_Text currentStateText;
+    [SerializeField] private Material damageMaterial;
+    [SerializeField] private Material baseMaterial;
+    [SerializeField] private SkinnedMeshRenderer meshRenderer;
 
     [Header("Idle State Presets")]
     [SerializeField] private float minIdleTime = 1f;
@@ -58,7 +61,13 @@ public class HermitRobotAIController : MonoBehaviour
     [SerializeField] private float damageChargeDecreaseRate = 1f;
     [SerializeField] private int numberOfDefenseShields = 1;
     private int numberOfShieldsRemaining;
-     
+    public bool IsDefending { get; private set; }
+
+    public delegate void ShootEvent();
+    public ShootEvent OnShoot;
+
+    public delegate void AOEEvent();
+    public AOEEvent OnAOE;
 
     private void Awake()
     {
@@ -192,6 +201,7 @@ public class HermitRobotAIController : MonoBehaviour
         IsOnHighAlert = true;
 
         damageCharge += amount;
+        StartCoroutine(PulseDamageMaterial());
     }
 
     private void UpdateStateText(string stateString)
@@ -199,6 +209,13 @@ public class HermitRobotAIController : MonoBehaviour
         if (currentStateText == null) return;
 
         currentStateText.text = stateString;
+    }
+
+    private IEnumerator PulseDamageMaterial()
+    {
+        meshRenderer.material = damageMaterial;
+        yield return new WaitForSeconds(.1f);
+        meshRenderer.material = baseMaterial;
     }
 
     #region States
@@ -416,6 +433,7 @@ public class HermitRobotAIController : MonoBehaviour
             if (aiController.EntityTarget == null) return;
 
             Instantiate(projectilePrefab, projectileSpawnpoint.position, projectileSpawnpoint.rotation);
+            aiController.OnShoot?.Invoke();
         }
     }
 
@@ -555,6 +573,7 @@ public class HermitRobotAIController : MonoBehaviour
             agent.SetDestination(agent.transform.position);
             defendTimer = 0f;
             IsDefending = true;
+            aiController.IsDefending = true;
 
             shieldHealthController = Instantiate(shieldPrefab, agent.transform.position, Quaternion.LookRotation(agent.transform.forward)).GetComponent<EntityHealthController>();
             shieldHealthController.OnEntityDied += OnShieldDied;
@@ -563,7 +582,7 @@ public class HermitRobotAIController : MonoBehaviour
 
         public void OnExit()
         {
-
+            aiController.IsDefending = false;
         }
 
         public void Tick()
