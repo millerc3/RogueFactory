@@ -2572,6 +2572,8 @@ GameObject:
   - component: {fileID: 3424179391264814463}
   - component: {fileID: 8098236418456838350}
   - component: {fileID: 2731749692438117276}
+  - component: {fileID: 250749535}
+  - component: {fileID: 250749542}
   m_Layer: 7
   m_Name: Third Person Character
   m_TagString: Player
@@ -2653,7 +2655,7 @@ MonoBehaviour:
   _useFlatBaseForGroundChecks: 0
   _collisionLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8193
   _triggerInteraction: 1
   _advanced:
     minMoveDistance: 0
@@ -2709,7 +2711,7 @@ MonoBehaviour:
   _crouchingSpeedModifier: 0.5
   _canEverJump: 1
   _jumpWhileCrouching: 1
-  _jumpMaxCount: 1
+  _jumpMaxCount: 2
   _jumpImpulse: 6
   _jumpMaxHoldTime: 0.35
   _jumpPreGroundedTime: 0.15
@@ -2741,6 +2743,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EntityData>k__BackingField: {fileID: 11400000, guid: 024c47ff7ff4ca049b4d3acc3cc31a05, type: 2}
+--- !u!114 &250749535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424179391264814461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea92b692f6ace1468abec6165524531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetRadius: 12
+  pickupItemLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  magnetStrength: 8
+--- !u!114 &250749542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424179391264814461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232740875774d604fbba008ff4d3bc35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: 0
+  <MaxHealth>k__BackingField: 100
+  deathScreenUI: {fileID: 0}
+  inputManager: {fileID: 1251319592}
 --- !u!1 &3424179392522150679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,7 +2887,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3011,13 +3046,13 @@ MonoBehaviour:
   inputManager: {fileID: 1251319592}
   defaultTarget: {fileID: 285260726190946141}
   TargetPoint: {x: 0, y: 0, z: 0}
-  currentWeaponData: {fileID: 11400000, guid: 3915b9d4686f9a84aa473cab573de141, type: 2}
+  currentWeaponData: {fileID: 11400000, guid: aaf4e7eb9e796ed468b340fcb680f34a, type: 2}
   weaponParent: {fileID: 1136409694}
   projectileStartPoint: {fileID: 6039749485791184022}
   weaponDatabase: {fileID: 11400000, guid: 7c8b245cc9e829749a55c7f5c22ab4aa, type: 2}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 1153
+    m_Bits: 11393
 --- !u!114 &1251319592
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4577956541902066467}
   - component: {fileID: 5651664292397336416}
-  m_Layer: 0
+  - component: {fileID: 5494008396898771983}
+  - component: {fileID: 5202402697588279250}
+  m_Layer: 12
   m_Name: HermitRobotProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +49,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
+  damage: 10
+  hittableTeams: 5
+--- !u!65 &5494008396898771983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960490209821794912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.31347135, y: 0.11756426, z: 0.12265727}
+  m_Center: {x: 0.00085254014, y: -0.001701057, z: -0.014491394}
+--- !u!54 &5202402697588279250
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960490209821794912}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4421661378184986107
 GameObject:
   m_ObjectHideFlags: 0

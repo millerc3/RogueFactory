@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 1873525440582643370}
   - component: {fileID: 1873525440582643371}
   - component: {fileID: 719732098600178171}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hermit Robot Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 60
+  <MaxHealth>k__BackingField: 30
 --- !u!114 &1873525440582643375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,10 +480,10 @@ MonoBehaviour:
   maxWanderTime: 10
   targetEntityLayerMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 8832
   awarenessRadius: 20
   highAlertAwarenessRadius: 50
-  enemyTeams: 1
+  enemyTeams: 5
   rangedAgressionRadius: 25
   projectilePrefab: {fileID: 1960490209821794912, guid: 9e1d42dfe069bf645ace77c30a6de933, type: 3}
   projectileSpawnpoint: {fileID: 1906168026604896844}
@@ -496,7 +496,7 @@ MonoBehaviour:
   meleeAttackDamage: 10
   defendTime: 4
   shieldPrefab: {fileID: 8802057779721319780, guid: ed1e8362a54497d459ee4b061c8fe0ec, type: 3}
-  damageChargeThresholdForDefense: 25
+  damageChargeThresholdForDefense: 16
   damageChargeDecreaseRate: 1
   numberOfDefenseShields: 1
 --- !u!114 &3108789653667989121

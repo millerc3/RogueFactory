@@ -1,12 +1,7 @@
 using EasyCharacterMovement;
-using Mono.CSharp;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.UI.Image;
@@ -129,6 +124,15 @@ public class HermitRobotAIController : MonoBehaviour
                                    chaseState,
                                    () => EntityTarget != null);
         stateMachine.AddTransition(chaseState,
+                                   idleState,
+                                   () => EntityTarget == null);
+        stateMachine.AddTransition(rangedState,
+                                   idleState,
+                                   () => EntityTarget == null);
+        stateMachine.AddTransition(meleeState,
+                                   idleState,
+                                   () => EntityTarget == null);
+        stateMachine.AddTransition(defendState,
                                    idleState,
                                    () => EntityTarget == null);
         stateMachine.AddTransition(chaseState,

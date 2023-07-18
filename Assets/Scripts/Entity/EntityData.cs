@@ -19,4 +19,5 @@ public enum EntityTeam_t
     NULL = 0,
     PLAYER = 1,
     ROBOT = 2,
+    TOWER = 4,
 }
