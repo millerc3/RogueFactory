@@ -927,6 +927,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""8801ea49-38ba-4f3d-9d35-2e96b7f2a5c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -949,6 +958,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard And Mouse"",
                     ""action"": ""Secondary Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afde964b-466e-43ee-937b-70fda53be2c0"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard And Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1027,6 +1047,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_CombatControls = asset.FindActionMap("Combat Controls", throwIfNotFound: true);
         m_CombatControls_PrimaryAttack = m_CombatControls.FindAction("Primary Attack", throwIfNotFound: true);
         m_CombatControls_SecondaryAttack = m_CombatControls.FindAction("Secondary Attack", throwIfNotFound: true);
+        m_CombatControls_Interact = m_CombatControls.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1322,12 +1343,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private ICombatControlsActions m_CombatControlsActionsCallbackInterface;
     private readonly InputAction m_CombatControls_PrimaryAttack;
     private readonly InputAction m_CombatControls_SecondaryAttack;
+    private readonly InputAction m_CombatControls_Interact;
     public struct CombatControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public CombatControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @PrimaryAttack => m_Wrapper.m_CombatControls_PrimaryAttack;
         public InputAction @SecondaryAttack => m_Wrapper.m_CombatControls_SecondaryAttack;
+        public InputAction @Interact => m_Wrapper.m_CombatControls_Interact;
         public InputActionMap Get() { return m_Wrapper.m_CombatControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1343,6 +1366,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SecondaryAttack.started -= m_Wrapper.m_CombatControlsActionsCallbackInterface.OnSecondaryAttack;
                 @SecondaryAttack.performed -= m_Wrapper.m_CombatControlsActionsCallbackInterface.OnSecondaryAttack;
                 @SecondaryAttack.canceled -= m_Wrapper.m_CombatControlsActionsCallbackInterface.OnSecondaryAttack;
+                @Interact.started -= m_Wrapper.m_CombatControlsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_CombatControlsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_CombatControlsActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_CombatControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1353,6 +1379,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SecondaryAttack.started += instance.OnSecondaryAttack;
                 @SecondaryAttack.performed += instance.OnSecondaryAttack;
                 @SecondaryAttack.canceled += instance.OnSecondaryAttack;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1417,5 +1446,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnPrimaryAttack(InputAction.CallbackContext context);
         void OnSecondaryAttack(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
