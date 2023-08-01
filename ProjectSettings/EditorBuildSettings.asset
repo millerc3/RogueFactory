@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TowerDefenseTest/TowerDefenseTest.unity
-    guid: 1377baa8ccbc25c41ab92d8dfd4f1c1e
-  - enabled: 1
     path: Assets/Scenes/MainMenu/MainMenu.unity
     guid: a2012a666960ef64cb9fa480c8eac83a
+  - enabled: 1
+    path: Assets/Scenes/TowerDefenseTest/TowerDefenseTest.unity
+    guid: 1377baa8ccbc25c41ab92d8dfd4f1c1e
   - enabled: 1
     path: Assets/Scenes/FactoryTest/FactoryTest.unity
     guid: 8dfaad8d39fb99343b5212b2e8d602d2
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LargeWorldTest/LargeWorldTest.unity
     guid: 113875c10372d2b4d8ea83576826b682
+  - enabled: 1
+    path: Assets/Scenes/ShipScene/ShipScene.unity
+    guid: f76a3688e1d0c0040985707b5830c643
   m_configObjects: {}

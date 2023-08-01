@@ -16,6 +16,7 @@ public static class SceneLoader
         TPSTesting,
         LoadingScreen,
         LargeWorldTest,
+        ShipScene,
     }
 
     private static Action OnLoaderCallback;

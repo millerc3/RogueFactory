@@ -13,4 +13,9 @@ public class MainMenuController : MonoBehaviour
     {
         SceneLoader.LoadScene(SceneLoader.Scene.TPSTesting);
     }
+
+    public void LoadShip()
+    {
+        SceneLoader.LoadScene(SceneLoader.Scene.ShipScene);
+    }
 }
