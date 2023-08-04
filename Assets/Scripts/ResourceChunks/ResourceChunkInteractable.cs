@@ -19,7 +19,7 @@ public class ResourceChunkInteractable : MonoBehaviour, IInteractable
     [SerializeField] private int damagePerTick = 1;
 
     private bool isMining = false;
-    private bool isInteracting = false;
+    //private bool isInteracting = false;
     private bool canDealDamage = true;
     private bool shouldMove = true;
 

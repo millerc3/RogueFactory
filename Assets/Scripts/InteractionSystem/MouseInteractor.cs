@@ -59,7 +59,7 @@ public class MouseInteractor : Interactor
         isPointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
         if (isPointerOverUI) return;
 
-        if (mouseItemData.AssignedInventorySlot.ItemData != null) return;
+        if (mouseItemData != null && mouseItemData.AssignedInventorySlot.ItemData != null) return;
 
         Vector3 mousePosition = input.UI.Point.ReadValue<Vector2>();
         mousePosition.z = playerCamera.nearClipPlane;

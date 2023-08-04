@@ -12,8 +12,8 @@ public class FadeImageOpacity : MonoBehaviour
     [SerializeField][Range(0f, 1.0f)] private float endOpacity = 1.0f;
     [Tooltip("Should the image start to transition on awake")]
     [SerializeField] private bool beginFadeOnAwake = true;
-    [Tooltip("How long does it take to fade from the start opacity to the end opacity")]
-    [SerializeField] private float timeToFade = 1.0f;
+    //[Tooltip("How long does it take to fade from the start opacity to the end opacity")]
+    //[SerializeField] private float timeToFade = 1.0f;
 
     public UnityEvent FadeStartEvent;
     private bool isFading = false;
