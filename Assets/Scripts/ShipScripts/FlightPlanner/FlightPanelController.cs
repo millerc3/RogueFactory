@@ -8,6 +8,7 @@ using DG.Tweening;
 public class FlightPanelController : MonoBehaviour
 {
     [SerializeField] private RectTransform flightViewPanel;
+    [SerializeField] private PlanetInfoViewController planetInfoViewController;
 
     [SerializeField] private int planetsToSpawn = 10;
 
@@ -106,17 +107,16 @@ public class FlightPanelController : MonoBehaviour
 
         foreach (FlightPlannerPlanet planet in planets)
         {
-            if (planet == topLeftPlanet) continue;
-
-            if (planet.rect.rect.x < topLeftPlanet.rect.rect.x)
+            if (planet.transform.localPosition.x < topLeftPlanet.transform.localPosition.x)
             {
-                topLeftPlanet = planet;
+                topLeftPlanet = planet;   
             }
         }
 
         FlightPlannerShip ship = Instantiate(shipPrefab, topLeftPlanet.transform.position, Quaternion.identity).GetComponent<FlightPlannerShip>();
         ship.transform.SetParent(flightViewPanel, true);
         ship.CurrentPlanet = topLeftPlanet;
+        planetInfoViewController.SetPlanetData(ship.CurrentPlanet.PlanetData, ship.CurrentPlanet.PlanetSprite);
     }
 
     bool IsTooCloseToAnyPlanets(Vector3 pos)

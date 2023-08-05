@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c06d56431bc9a44b95d3d57bd9d70d0, type: 3}
+  m_Name: Terran
+  m_EditorClassIdentifier: 
+  Id: 0
+  TypeName: Terran
+  Description: A balanced ecosytem. Commonly inhabited by a single intelligent species
+  PlanetSprites:
+  - {fileID: 21300000, guid: 1159caf7e1bf00246bdb7d0f3e3a4753, type: 3}
+  - {fileID: 21300000, guid: b2ea74d191dcefb46adff920d995dd2b, type: 3}
+  - {fileID: 21300000, guid: 52a85b01eaececa4ba8ab1ec4055d1bc, type: 3}
+  - {fileID: 21300000, guid: 5c842d868dd70db43853462348d3bd9f, type: 3}
+  PlanetResources:
+  - {fileID: 11400000, guid: df95cd4fa5434404188305998d2b9e6b, type: 2}
+  - {fileID: 11400000, guid: 927faad07ea88ef479f6bf760b232986, type: 2}
+  - {fileID: 11400000, guid: 8989abbcb76e3f646aef60bfca07f782, type: 2}
+  - {fileID: 11400000, guid: 11998b629f6fa62409afb22782fe00fe, type: 2}

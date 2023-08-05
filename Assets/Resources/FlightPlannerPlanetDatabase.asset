@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0da1950c521684886b8c8019d71777, type: 3}
+  m_Name: FlightPlannerPlanetDatabase
+  m_EditorClassIdentifier: 
+  ObjectResourceFolderName: FlightPlannerPlanets
+  Objects:
+  - {fileID: 11400000, guid: 8ac4b167ae6d15c458148c8af49b10e6, type: 2}
+  - {fileID: 11400000, guid: 99a500a0ce4104e499eddc60015fc279, type: 2}
+  - {fileID: 11400000, guid: e0cfecd6380c18444a760cdcf4d2138c, type: 2}
+  - {fileID: 11400000, guid: c9c7a0f7260c64842b835b119713a3d8, type: 2}

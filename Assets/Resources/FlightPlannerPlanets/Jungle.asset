@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c06d56431bc9a44b95d3d57bd9d70d0, type: 3}
+  m_Name: Jungle
+  m_EditorClassIdentifier: 
+  Id: 2
+  TypeName: Jungle
+  Description: A hot and humid body with creatures lurking in the shadows
+  PlanetSprites:
+  - {fileID: 21300000, guid: fab003146f092a147b14dc35643fbdab, type: 3}
+  - {fileID: 21300000, guid: ba5a0dea5da710e4892c09f29bb66ef3, type: 3}
+  - {fileID: 21300000, guid: 075d5ae5c2c538c41afb191b96d90999, type: 3}
+  - {fileID: 21300000, guid: ced850253cd87df40b38cb857e7de381, type: 3}
+  - {fileID: 21300000, guid: 70cf93d57e692104c82b3290a4d47074, type: 3}
+  PlanetResources:
+  - {fileID: 11400000, guid: 927faad07ea88ef479f6bf760b232986, type: 2}
