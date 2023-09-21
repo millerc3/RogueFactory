@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74ab838344ec6418281cc525115631, type: 3}
+  m_Name: Railing
+  m_EditorClassIdentifier: 
+  Id: 6
+  Name: Railing
+  Size: {x: 3, y: 1}
+  Prefab: {fileID: 8628991063877611423, guid: 6b105a15b716d9e41b161c0c48884e54, type: 3}
+  Sprite: {fileID: 21300000, guid: 3cec57a5e089e4d488def72f13e7b397, type: 3}
+  previewPrefab: {fileID: 8628991063877611423, guid: f7935c52e6850f842b9951b3be26ea14, type: 3}
+  InventoryItem: {fileID: 11400000, guid: cf1afab9b972ae4469909397519a6bd2, type: 2}

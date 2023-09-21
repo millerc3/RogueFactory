@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LoadSceneOnTriggerEnter : MonoBehaviour
 {
-    [SerializeField] private SceneLoader.Scene sceneToLoad;
+    [SerializeField] protected SceneLoader.Scene sceneToLoad;
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         SceneLoader.LoadScene(sceneToLoad);
     }
